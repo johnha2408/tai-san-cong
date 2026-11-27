@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản lý Nhà văn hóa – Phường Phú Xuân</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f5f9;--surface:#ffffff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#e8eaf1;--line2:#f1f3f8;
+  --brand:#5b3fd1;--brand2:#7c5cf0;--brand-soft:#f1edff;
+  --green:#12a150;--green-soft:#e7f8ee;
+  --red:#e5484d;--red-soft:#fdecec;
+  --amber:#e08a00;--amber-soft:#fff4e0;
+  --blue:#2f6fed;--blue-soft:#e9f0fe;
+  --slate-soft:#f1f5f9;
+  --r:16px;--r-sm:10px;
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.04);
+  --shadow-lg:0 24px 60px rgba(15,23,42,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+svg{display:block}
+.ico{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- Top bar ---------- */
+.topbar{position:sticky;top:0;z-index:15;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+.topbar .in{max-width:1320px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:14px}
+.logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;box-shadow:0 6px 16px rgba(91,63,209,.3)}
+.logo .ico{width:20px;height:20px}
+.brand b{display:block;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.brand span{font-size:12px;color:var(--muted)}
+.topbar .sp{flex:1}
+.pill-date{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);background:var(--slate-soft);padding:7px 12px;border-radius:99px}
+.pill-date .ico{width:15px;height:15px}
+
+main{max-width:1320px;margin:0 auto;padding:28px 28px 48px}
+.pagehead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.pagehead h1{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.pagehead p{margin:4px 0 0;color:var(--muted)}
+
+/* ---------- KPI ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;text-align:left;cursor:pointer;box-shadow:var(--shadow);transition:border-color .15s,transform .15s,box-shadow .15s}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,23,42,.08)}
+.kpi.active{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.kpi .row{display:flex;align-items:center;justify-content:space-between}
+.kpi .lab{font-size:13px;color:var(--muted);font-weight:500}
+.kpi .badge{width:36px;height:36px;border-radius:10px;display:grid;place-items:center}
+.kpi .num{font-size:32px;font-weight:800;letter-spacing:-.03em;margin:10px 0 2px;line-height:1.1}
+.kpi .num small{font-size:15px;color:var(--faint);font-weight:600;margin-left:4px}
+.kpi .foot{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.kpi .track{flex:1;height:6px;border-radius:99px;background:var(--line2);overflow:hidden}
+.kpi .track i{display:block;height:100%;border-radius:99px}
+.t-brand{background:var(--brand-soft);color:var(--brand)}.t-green{background:var(--green-soft);color:var(--green)}
+.t-red{background:var(--red-soft);color:var(--red)}.t-amber{background:var(--amber-soft);color:var(--amber)}.t-blue{background:var(--blue-soft);color:var(--blue)}
+
+.kpis2{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.mini{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;cursor:pointer;box-shadow:var(--shadow);text-align:left;transition:.15s}
+.mini:hover{border-color:#d6d9e4}
+.mini.active{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.mini .badge{width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.mini b{font-size:20px;font-weight:800;letter-spacing:-.02em;display:block;line-height:1.15}
+.mini span{font-size:12.5px;color:var(--muted)}
+
+/* ---------- Cards ---------- */
+.grid2{display:grid;grid-template-columns:1.65fr 1fr;gap:16px;margin-top:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.card .hd{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 0}
+.card .hd h2{margin:0;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.card .hd span{font-size:12.5px;color:var(--muted)}
+.card .bd{padding:16px 20px 20px}
+
+.wardrow{display:grid;grid-template-columns:110px 1fr 74px;align-items:center;gap:14px;padding:9px 10px;margin:0 -10px;border-radius:10px;cursor:pointer;transition:background .12s}
+.wardrow:hover{background:var(--line2)}
+.wardrow.active{background:var(--brand-soft)}
+.wardrow .nm{font-weight:600;font-size:13.5px}
+.wardrow .val{text-align:right;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.wardrow .val b{color:var(--ink);font-weight:700}
+.stack{display:flex;height:10px;border-radius:99px;overflow:hidden;background:var(--line2);gap:2px}
+.stack i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}
+
+.donutwrap{display:flex;align-items:center;gap:22px}
+.donut{position:relative;width:150px;height:150px;flex:none}
+.donut .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.donut .c b{font-size:28px;font-weight:800;letter-spacing:-.03em;display:block;line-height:1}
+.donut .c span{font-size:11.5px;color:var(--muted)}
+.dlist{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.dlist button{display:flex;align-items:center;gap:8px;border:0;background:none;padding:5px 8px;margin:0 -8px;border-radius:8px;cursor:pointer;font-size:13px;text-align:left}
+.dlist button:hover{background:var(--line2)}
+.dlist button.active{background:var(--brand-soft)}
+.dlist i{width:9px;height:9px;border-radius:3px;flex:none}
+.dlist span{flex:1;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dlist b{font-variant-numeric:tabular-nums}
+
+/* ---------- Toolbar ---------- */
+.listcard{margin-top:16px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.search{position:relative;flex:1 1 220px;min-width:200px}
+.search .ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--faint)}
+.search input{width:100%;height:40px;border:1px solid var(--line);border-radius:var(--r-sm);padding:0 12px 0 38px;background:#fafbfd;outline:none;transition:.15s}
+.search input:focus,.sel:focus{border-color:var(--brand);background:#fff;box-shadow:0 0 0 3px var(--brand-soft)}
+.sel{width:150px;text-overflow:ellipsis;height:40px;border:1px solid var(--line);border-radius:var(--r-sm);padding:0 34px 0 12px;background:#fafbfd url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;appearance:none;-webkit-appearance:none;outline:none;cursor:pointer;color:var(--ink2);font-weight:500}
+.sel.on{border-color:var(--brand);color:var(--brand);background-color:var(--brand-soft)}
+.seg{display:inline-flex;background:var(--line2);border-radius:var(--r-sm);padding:3px;height:40px}
+.seg button{border:0;background:none;padding:0 12px;border-radius:8px;cursor:pointer;font-weight:500;color:var(--muted);font-size:13px}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(15,23,42,.1)}
+.btn{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-radius:var(--r-sm);border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:13px;color:var(--ink2);transition:.15s;white-space:nowrap}
+.btn:hover{border-color:#cfd3df;background:#fafbfd}
+.btn .ico{width:16px;height:16px}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 4px 12px rgba(91,63,209,.25)}
+.btn.primary:hover{background:#4c32bd}
+.btn.ghost{border-color:transparent;background:none;color:var(--muted)}
+.btn.ghost:hover{color:var(--ink);background:var(--line2)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+.subbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 20px;border-bottom:1px solid var(--line);background:#fcfcfe}
+.subbar .cnt{font-size:13px;color:var(--muted);margin-right:6px}
+.subbar .cnt b{color:var(--ink)}
+.fchip{display:inline-flex;align-items:center;gap:6px;background:var(--brand-soft);color:var(--brand);font-size:12.5px;font-weight:600;padding:4px 6px 4px 10px;border-radius:99px}
+.fchip button{border:0;background:rgba(91,63,209,.12);color:var(--brand);width:18px;height:18px;border-radius:50%;cursor:pointer;display:grid;place-items:center;padding:0;font-size:13px;line-height:1}
+
+/* ---------- Table ---------- */
+.tbl{width:100%;border-collapse:separate;border-spacing:0}
+.tbl th{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:600;text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none;white-space:nowrap;background:#fff;position:sticky;top:63px;z-index:2}
+.tbl th:first-child{padding-left:20px}.tbl td:first-child{padding-left:20px}
+.tbl th .arr{display:inline-block;width:10px;color:var(--brand)}
+.tbl td{padding:14px 16px;border-bottom:1px solid var(--line2);vertical-align:middle}
+.tbl tbody tr{cursor:pointer;transition:background .1s}
+.tbl tbody tr:hover{background:#fafaff}
+.tbl tbody tr.sel{background:var(--brand-soft)}
+.tbl tbody tr:last-child td{border-bottom:0}
+.who{display:flex;align-items:center;gap:12px}
+.av{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none;letter-spacing:-.02em}
+.who b{display:block;font-weight:600;font-size:14px}
+.who small{color:var(--muted);font-size:12.5px}
+.addr{color:var(--ink2);max-width:380px}
+.addr small{display:flex;align-items:center;gap:4px;color:var(--muted);font-size:12px;margin-top:2px}
+.addr small .ico{width:13px;height:13px}
+.date{font-variant-numeric:tabular-nums;color:var(--ink2);white-space:nowrap}
+.muted{color:var(--faint)}
+.stt{color:var(--faint);font-variant-numeric:tabular-nums;width:40px}
+
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;white-space:nowrap;margin:2px 4px 2px 0}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.tag.plain::before{display:none}
+.g-green{background:var(--green-soft);color:var(--green)}.g-red{background:var(--red-soft);color:var(--red)}
+.g-amber{background:var(--amber-soft);color:#b86e00}.g-blue{background:var(--blue-soft);color:var(--blue)}
+.g-slate{background:var(--slate-soft);color:var(--muted)}
+
+.miss{display:flex;gap:6px}
+.miss span{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--slate-soft);color:var(--faint)}
+.miss span.ok{background:var(--green-soft);color:var(--green)}
+.miss .ico{width:15px;height:15px}
+.chev{color:var(--faint);width:30px}
+.empty{padding:56px 20px;text-align:center;color:var(--muted)}
+.empty .ico{width:36px;height:36px;margin:0 auto 10px;color:var(--faint)}
+
+/* ---------- Drawer ---------- */
+.scrim{position:fixed;inset:0;background:rgba(15,23,42,.4);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:.25s;z-index:30}
+.scrim.on{opacity:1;pointer-events:auto}
+aside{position:fixed;top:12px;right:12px;bottom:12px;width:min(580px,calc(100% - 24px));background:var(--bg);z-index:31;transform:translateX(calc(100% + 24px));transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
+aside.on{transform:none}
+.dmap{position:relative;height:230px;background:linear-gradient(135deg,#e9e6f7,#dfe8f7);flex:none}
+.dmap iframe{width:100%;height:100%;border:0;display:block}
+.dmap .nomap{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center}
+.dmap .x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:10px;border:0;background:#fff;box-shadow:0 2px 8px rgba(15,23,42,.15);cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.dmap .open{position:absolute;bottom:12px;right:12px;display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink);text-decoration:none;font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:9px;box-shadow:0 2px 8px rgba(15,23,42,.15)}
+.dmap .open .ico{width:14px;height:14px}
+.dhead{background:#fff;padding:18px 22px;border-bottom:1px solid var(--line)}
+.dhead .top{display:flex;align-items:center;gap:12px}
+.dhead h3{margin:0;font-size:20px;font-weight:800;letter-spacing:-.02em}
+.dhead .sub{color:var(--muted);font-size:13px}
+.dhead .tags{margin-top:10px}
+.dbody{padding:16px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:12px}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.box h4{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin:0 0 12px;color:var(--ink)}
+.box h4 .ico{width:16px;height:16px;color:var(--brand)}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:9px 14px;font-size:13.5px;margin:0}
+.kv dt{color:var(--muted)}.kv dd{margin:0;color:var(--ink)}
+.note{display:flex;gap:10px;background:var(--amber-soft);color:#7a4a00;border-radius:10px;padding:10px 12px;font-size:13px;margin-top:12px}
+.note .ico{width:16px;height:16px;margin-top:2px}
+.hint{font-size:12px;color:var(--muted);margin-top:8px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;cursor:zoom-in;background:var(--line2);transition:.15s}
+.gallery img:hover{opacity:.9}
+.placeholder{display:flex;flex-direction:column;align-items:center;gap:6px;border:1.5px dashed #dde0ea;border-radius:12px;padding:20px;text-align:center;color:var(--muted);font-size:13px;background:#fcfcfe}
+.placeholder .ico{width:24px;height:24px;color:var(--faint)}
+.dfoot{background:#fff;padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center}
+.dfoot .sp{flex:1}
+
+.form label{display:block;font-size:12.5px;color:var(--ink2);margin:14px 0 6px;font-weight:600}
+.form label:first-child{margin-top:0}
+.form input,.form select,.form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:#fafbfd;outline:none;transition:.15s}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--brand);background:#fff;box-shadow:0 0 0 3px var(--brand-soft)}
+.form textarea{min-height:76px;resize:vertical}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.banner{display:none;align-items:center;gap:12px;flex-wrap:wrap;background:linear-gradient(90deg,#efeaff,#e9f0fe);border:1px solid #ddd5fb;border-radius:14px;padding:12px 16px;margin-bottom:16px;font-size:13.5px;color:#3b2a8f}
+.banner.on{display:flex}
+.banner .ico{color:var(--brand)}
+.banner span{flex:1}
+
+.lightbox{position:fixed;inset:0;background:rgba(5,8,20,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:94vw;max-height:90vh;border-radius:10px}
+footer{max-width:1320px;margin:0 auto;padding:0 28px 32px;color:var(--faint);font-size:12px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){.kpis,.kpis2{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .topbar .in{padding:10px 16px}.pill-date{display:none}
+  main{padding:18px 14px 36px}.pagehead h1{font-size:21px}
+  .kpi .num{font-size:26px}
+  .toolbar{padding:14px}.subbar{padding:10px 14px}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+  .tbl tr{padding:14px;border-bottom:1px solid var(--line2);position:relative}
+  .tbl td{padding:0;border:0}
+  .tbl td.stt,.tbl td.chev{display:none}
+  .tbl td.c-addr{margin:10px 0 8px}
+  .tbl td.c-date{position:absolute;top:16px;right:14px;width:auto;font-size:12px}
+  .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .toolbar .search,.toolbar .seg{grid-column:1/-1}
+  .seg{display:flex}.seg button{flex:1;padding:0 6px}
+  .sel{width:100%}
+  .tbl td.c-miss{margin-top:8px}
+  .tbl td.c-tt{display:block}
+  .donut{width:124px;height:124px}
+  .kv{grid-template-columns:110px 1fr}
+  aside{top:0;right:0;bottom:0;width:100%;border-radius:0}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+@media print{.topbar,.toolbar,.subbar,.banner,aside,.scrim{display:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="m9 15 2 2 4-4"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M12 12v3"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18 14a6 6 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+</svg>
+
+<div class="topbar"><div class="in">
+  <div class="logo"><svg class="ico"><use href="#i-home"/></svg></div>
+  <div class="brand"><b>Nhà văn hóa Phú Xuân</b><span>Trung tâm Dịch vụ sự nghiệp công</span></div>
+  <div class="sp"></div>
+  <div class="pill-date"><svg class="ico"><use href="#i-cal"/></svg><span id="updated"></span></div>
+</div></div>
+
+<main>
+  <div class="banner" id="banner">
+    <svg class="ico"><use href="#i-info"/></svg>
+    <span id="bannerText"></span>
+    <button class="btn" id="btnExport"><svg class="ico"><use href="#i-dl"/></svg>Tải dữ liệu (JSON)</button>
+    <button class="btn ghost" id="btnDiscard">Bỏ thay đổi</button>
+  </div>
+
+  <div class="pagehead">
+    <div>
+      <h1>Tổng quan nhà văn hóa</h1>
+      <p id="subtitle"></p>
+    </div>
+  </div>
+
+  <section class="kpis" id="kpis"></section>
+  <section class="kpis2" id="kpis2"></section>
+
+  <section class="grid2">
+    <div class="card">
+      <div class="hd"><h2>Tiến độ theo khu vực</h2><span>Bấm để lọc</span></div>
+      <div class="bd">
+        <div id="wards"></div>
+        <div class="legend">
+          <span><i style="background:var(--green)"></i>Có biên bản</span>
+          <span><i style="background:#f6a5a8"></i>Chưa có biên bản</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="hd"><h2>Trạng thái bố trí</h2><span>47 tổ dân phố</span></div>
+      <div class="bd"><div class="donutwrap" id="donut"></div></div>
+    </div>
+  </section>
+
+  <section class="card listcard">
+    <div class="toolbar">
+      <div class="search"><svg class="ico"><use href="#i-search"/></svg><input type="search" id="q" placeholder="Tìm tổ dân phố, địa chỉ, ghi chú…"></div>
+      <div class="seg" id="segBB">
+        <button data-v="" class="on">Tất cả</button>
+        <button data-v="yes">Có biên bản</button>
+        <button data-v="no">Chưa có BB</button>
+      </div>
+      <select class="sel" id="fWard"><option value="">Khu vực</option></select>
+      <select class="sel" id="fTT"><option value="">Trạng thái</option></select>
+      <select class="sel" id="fImg">
+        <option value="">Hình ảnh</option>
+        <option value="no">Cần bổ sung ảnh</option>
+        <option value="yes">Đã có ảnh</option>
+      </select>
+      <select class="sel" id="fHT">
+        <option value="">Hạ tầng</option>
+        <option value="none">Chưa đánh giá</option>
+      </select>
+    </div>
+    <div class="subbar" id="subbar"></div>
+    <table class="tbl">
+      <thead><tr>
+        <th data-k="id">#<span class="arr"></span></th>
+        <th data-k="tdp">Tổ dân phố <span class="arr"></span></th>
+        <th data-k="diaDiem">Địa điểm bố trí <span class="arr"></span></th>
+        <th data-k="trangThai">Trạng thái <span class="arr"></span></th>
+        <th data-k="ngay">Ngày BB <span class="arr"></span></th>
+        <th>Hồ sơ</th>
+        <th></th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
+</main>
+<footer id="footer"></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside id="drawer" aria-hidden="true">
+  <div class="dmap" id="dMap"></div>
+  <div class="dhead">
+    <div class="top">
+      <div class="av" id="dAv"></div>
+      <div><h3 id="dTitle"></h3><div class="sub" id="dSub"></div></div>
+    </div>
+    <div class="tags" id="dTags"></div>
+  </div>
+  <div class="dbody" id="dBody"></div>
+  <div class="dfoot" id="dFoot"></div>
+</aside>
+<div class="lightbox" id="lightbox"><img id="lbImg" alt=""></div>
+
+<script>
+/* =====================================================================
+   CẬP NHẬT DỮ LIỆU
+   - Sửa trực tiếp mảng DATA bên dưới, hoặc bấm "Cập nhật" trên từng nhà
+     văn hóa → "Tải dữ liệu (JSON)" → dán đè vào giữa hai dòng
+     DATA-START / DATA-END.
+   - anh: danh sách đường dẫn ảnh, ví dụ ["images/dong-ba-1.jpg"]
+     (upload ảnh vào thư mục images/ trong repo) hoặc link ảnh đầy đủ.
+   - toaDo: [vĩ độ, kinh độ], ví dụ [16.4721, 107.5794] – nếu có, bản đồ
+     sẽ ghim đúng vị trí thay vì tìm theo địa chỉ (mapQuery).
+   - haTang.tinhTrang: "Tốt" | "Bình thường" | "Xuống cấp" | "Cần sửa chữa"
+   ===================================================================== */
+const META = {
+  donVi: "Phường Phú Xuân",
+  nguon: "Danh sách bố trí địa điểm NVH, SHCĐ cho 47 TDP – đối chiếu biên bản bố trí",
+  capNhat: "27/11/2026"
+};
+/* DATA-START */
+const DATA = [
+ {
+  "id": 1,
+  "phuongCu": "Đông Ba",
+  "tdp": "Đông Ba",
+  "diaDiem": "15 Trần Hưng Đạo",
+  "file39": "15 Trần Hưng Đạo (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "15 Trần Hưng Đạo, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 2,
+  "phuongCu": "Đông Ba",
+  "tdp": "Phú Hòa",
+  "diaDiem": "77 Đào Duy Từ",
+  "file39": "Dự kiến 77 Đào Duy Từ (Chưa bàn giao cho TTDVSNC)  hoặc mượn Trụ Sở Công an 70 Phan Đăng Lưu.",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi dự kiến",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "77 Đào Duy Từ, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 3,
+  "phuongCu": "Đông Ba",
+  "tdp": "Thái Trạch",
+  "diaDiem": "30 Nguyễn Biểu",
+  "file39": "30 Nguyễn Biểu (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "30 Nguyễn Biểu, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 4,
+  "phuongCu": "Đông Ba",
+  "tdp": "Trung Tích",
+  "diaDiem": "42 Lê Thánh Tôn",
+  "file39": "42 Lê Thánh Tôn (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "42 Lê Thánh Tôn, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 5,
+  "phuongCu": "Đông Ba",
+  "tdp": "Thành Nội",
+  "diaDiem": "103 Nhật Lệ, 107 Nhật Lệ (Trụ sở ANCS) – bố trí chung TDP Tịnh Tâm",
+  "file39": "103 Nhật Lê – Tịnh Tâm (Bố trí chung TDp Tịnh Tâm, Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí; biên bản có thêm 107 Nhật Lệ",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "103 Nhật Lệ, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 6,
+  "phuongCu": "Đông Ba",
+  "tdp": "Thuận Thành",
+  "diaDiem": "Kiệt 68 Phùng Hưng",
+  "file39": "Kiệt 68 Phùng Hưng (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "Kiệt 68 Phùng Hưng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 7,
+  "phuongCu": "Đông Ba",
+  "tdp": "Tịnh Tâm",
+  "diaDiem": "103 Nhật Lệ, 107 Nhật Lệ (Trụ sở ANCS) – bố trí chung TDP Thành Nội",
+  "file39": "103 Nhật Lê – (Bố trí chung TDP Thành Nội,Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí; biên bản có thêm 107 Nhật Lệ",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "103 Nhật Lệ, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 8,
+  "phuongCu": "Gia Hội",
+  "tdp": "An Mỹ",
+  "diaDiem": "224 Bạch Đằng",
+  "file39": "224 Bạch Đằng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "224 Bạch Đằng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 9,
+  "phuongCu": "Gia Hội",
+  "tdp": "Đệ Lục",
+  "diaDiem": "236 Chi Lăng và 58 Mạc Đĩnh Chi",
+  "file39": "236 Chi Lăng và 58 Mạc Đỉnh Chi (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Số nhà trên biên bản bị viết đè; ghi theo file gốc",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "236 Chi Lăng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 10,
+  "phuongCu": "Gia Hội",
+  "tdp": "Gia Hội",
+  "diaDiem": "Tạm bố trí 130 Chi Lăng (chung TDP Phú Cát)",
+  "file39": "152 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "12/9/2026",
+  "ghiChu": "Biên bản tạm bố trí mới hơn file gốc",
+  "coBienBan": true,
+  "trangThai": "Tạm bố trí",
+  "mapQuery": "130 Chi Lăng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 11,
+  "phuongCu": "Gia Hội",
+  "tdp": "Lạc Hộ",
+  "diaDiem": "Trần Quang Long – Trụ sở tổ 18 Gia Hội cũ",
+  "file39": "Trần Quang Long - Trụ sở tổ 18 Gia Hội cũ (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đã bố trí (chưa có BB)",
+  "mapQuery": "Trần Quang Long, Gia Hội, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 12,
+  "phuongCu": "Gia Hội",
+  "tdp": "Ngự Viên",
+  "diaDiem": "8 Chùa Ông",
+  "file39": "8 Chùa Ông (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "8 Chùa Ông, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 13,
+  "phuongCu": "Gia Hội",
+  "tdp": "Phú Cát",
+  "diaDiem": "152 Chi Lăng; Tạm bố trí 130 Chi Lăng (chung TDP Gia Hội)",
+  "file39": "152 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "26/8/2026 / 12/9/2026",
+  "ghiChu": "Ngày biên bản 152 Chi Lăng là 26/8 (file gốc ghi 29/8); có thêm biên bản tạm bố trí 130 Chi Lăng",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "152 Chi Lăng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 14,
+  "phuongCu": "Gia Hội",
+  "tdp": "Phú Hiệp",
+  "diaDiem": "2 Kiệt 111 Nguyễn Chí Thanh, 118 Nguyễn Chí Thanh và Ban Bảo vệ dân phố 279 Chi Lăng",
+  "file39": "2 Kiệt 111 Nguyễn Chí Thanh, 118 Nguyễn Chí Thanh và Ban Bảo vệ dân phố 279 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đã bố trí (chưa có BB)",
+  "mapQuery": "118 Nguyễn Chí Thanh, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 15,
+  "phuongCu": "Gia Hội",
+  "tdp": "Phú Mỹ",
+  "diaDiem": "328 Chi Lăng (chung TDP Xuân Dương)",
+  "file39": "328 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "328 Chi Lăng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 16,
+  "phuongCu": "Gia Hội",
+  "tdp": "Thế Lại",
+  "diaDiem": "12/20 Lê Đình Chinh",
+  "file39": "12/20 Lê Đình Chinh (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "12/20 Lê Đình Chinh, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 17,
+  "phuongCu": "Phú Hậu",
+  "tdp": "An Quán",
+  "diaDiem": "444 Chi Lăng",
+  "file39": "444 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "444 Chi Lăng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 18,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Bãi Dâu",
+  "diaDiem": "24 Ngô Kha, 26 Ngô Kha (ANCS)",
+  "file39": "24 Ngô Kha + 2 trụ sở dân phòng gần 24 Ngô Kha (Đã bố trí ngày 30/7/2026)",
+  "ngayBoTri": "30/7/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "24 Ngô Kha, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 19,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Chợ Dinh",
+  "diaDiem": "425 Chi Lăng",
+  "file39": "425 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "Ngày biên bản 28/8 (file gốc ghi 29/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "425 Chi Lăng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 20,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Phú Hậu",
+  "diaDiem": "44 Ngô Nhân Tịnh",
+  "file39": "44 Ngô Nhân Tịnh (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "44 Ngô Nhân Tịnh, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 21,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Thị Sắc",
+  "diaDiem": "Chung cư YQK (Đoàn Nguyễn Tuấn – Ngô Kha)",
+  "file39": "Ngã ba Ngô Kha –  Đoàn Nguyễn Tuấn (đầu đường Bùi Dương Lịch (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "Chung cư Đoàn Nguyễn Tuấn, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 22,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Xuân Dương",
+  "diaDiem": "328 Chi Lăng (chung TDP Phú Mỹ)",
+  "file39": "328 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "328 Chi Lăng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 23,
+  "phuongCu": "Tây Lộc",
+  "tdp": "An Trạch",
+  "diaDiem": "36 La Sơn Phu Tử",
+  "file39": "36 La Sơn Phu Tử (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "36 La Sơn Phu Tử, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 24,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Bắc Thuận",
+  "diaDiem": "95 Tăng Bạt Hổ",
+  "file39": "95 Tăng Bạt Hổ (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "95 Tăng Bạt Hổ, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 25,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Do Nghĩa",
+  "diaDiem": "32 Thái Phiên – trụ sở dân phòng (và sử dụng Trường TH Tây Lộc, 115 Trần Quốc Toản)",
+  "file39": "32 Thái Phiên - trụ sở dân phòng (và sử dụng Trường TH Tây Lộc 115 Trần Quốc Toản, Chưa bố trí)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Chưa bố trí",
+  "mapQuery": "32 Thái Phiên, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 26,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Khánh Ninh",
+  "diaDiem": "136 Lê Đại Hành",
+  "file39": "136 Lê Đại Hành (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "136 Lê Đại Hành, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 27,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Mộc Đức",
+  "diaDiem": "32 Thái Phiên",
+  "file39": "32 Thái Phiên (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "26/8/2026",
+  "ghiChu": "Ngày biên bản 26/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "32 Thái Phiên, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 28,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Phú Thuận",
+  "diaDiem": "512 Lê Duẩn (đề xuất)",
+  "file39": "512 Lê Duẫn (Đề xuất)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đề xuất",
+  "mapQuery": "512 Lê Duẩn, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 29,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Tây Lộc",
+  "diaDiem": "44 Trần Quốc Toản",
+  "file39": "44 Trần Quốc Toản (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "44 Trần Quốc Toản, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 30,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Tây Tĩnh",
+  "diaDiem": "40 Hòa Mỹ",
+  "file39": "40 Hòa Mỹ (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "40 Hòa Mỹ, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 31,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Thừa Thanh",
+  "diaDiem": "49A Thánh Gióng",
+  "file39": "49A Thánh Gióng (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "49A Thánh Gióng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 32,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Vĩnh Lợi",
+  "diaDiem": "49 Đạm Phương",
+  "file39": "49 Đạm Phương (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "49 Đạm Phương, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 33,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Cửa Hữu",
+  "diaDiem": "Mượn 127 Nguyễn Trãi",
+  "file39": "Mượn 127 Nguyễn Trãi",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Mượn tạm",
+  "mapQuery": "127 Nguyễn Trãi, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 34,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Huệ An",
+  "diaDiem": "69 Lê Huân hoặc Trường THCS Trần Cao Vân",
+  "file39": "69 Lê Huân hoặc trường THCS Trần Cao Vân (Đang xem xét, Chưa bố trí)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đang xem xét",
+  "mapQuery": "69 Lê Huân, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 35,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Phú Thạnh",
+  "diaDiem": "248A Lê Duẩn",
+  "file39": "248A Lê Duẫn (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "248A Lê Duẩn, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 36,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Thuận Cát",
+  "diaDiem": "Trường TH Thuận Hòa (CS 3)",
+  "file39": "Trường TH Thuận Hòa (CS 3)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Mượn tạm",
+  "mapQuery": "Trường Tiểu học Thuận Hòa, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 37,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Thuận Hòa",
+  "diaDiem": "Chưa có (mượn trường học)",
+  "file39": "Chưa có (mượn trường học)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Chưa bố trí",
+  "mapQuery": "",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 38,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Tri Vụ",
+  "diaDiem": "Mượn 127 Nguyễn Trãi",
+  "file39": "Mượn 127 Nguyễn Trãi",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Mượn tạm",
+  "mapQuery": "127 Nguyễn Trãi, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 39,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "An Thạnh",
+  "diaDiem": "115B Thánh Gióng (30 Mang Cá hoạt động tạm đến khi giải tỏa)",
+  "file39": "115B Thánh Gióng (30 Mang Cá hoạt động tạm đến khi giải tỏa) (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "Biên bản ghi 32 Mang Cá; ghi theo file gốc",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "115B Thánh Gióng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 40,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Bắc Hòa",
+  "diaDiem": "405 Tăng Bạt Hổ",
+  "file39": "308 Tăng Bạt Hỗ (Đã bố trí ngày 28/8/2026) / Số 405 Tăng Bạt Hổ (Đối chiếu CV UB)",
+  "ngayBoTri": "24/9/2026",
+  "ghiChu": "Biên bản mới ghi 405 Tăng Bạt Hổ",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "405 Tăng Bạt Hổ, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 41,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Đệ Nhị",
+  "diaDiem": "79 Đào Duy Anh",
+  "file39": "79 Đào Duy Anh (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "79 Đào Duy Anh, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 42,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Lương Y",
+  "diaDiem": "31/16 Lương Y",
+  "file39": "31/16 Lương Y (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "31/16 Lương Y, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 43,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Phú Bình",
+  "diaDiem": "28 Đào Duy Anh và 56 Đào Duy Anh",
+  "file39": "28 Đào Duy Anh + 56 Đào Duy Anh (Đã bố trí ngày 26/8/2026)",
+  "ngayBoTri": "26/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "28 Đào Duy Anh, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 44,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Phú Nhơn",
+  "diaDiem": "53 Lê Văn Hưu",
+  "file39": "53 Lê Văn Hưu (Đã bố trí ngày 13/7/2026)",
+  "ngayBoTri": "13/7/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "53 Lê Văn Hưu, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 45,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Tàng Thơ",
+  "diaDiem": "Kiệt 137 Đinh Tiên Hoàng",
+  "file39": "Kiệt 137 Đinh Tiên Hoàng (chưa bố trí)",
+  "ngayBoTri": "05/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "Kiệt 137 Đinh Tiên Hoàng, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 46,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Tây Linh",
+  "diaDiem": "16 Thế Lữ",
+  "file39": "16 Thế Lữ ((Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "Biên bản ghi 18 Thế Lữ; ghi theo file gốc",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "16 Thế Lữ, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 47,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Vĩnh An",
+  "diaDiem": "32 Mai Thúc Loan",
+  "file39": "32 Mai Thúc Loan (Do cơ sở vật chất không có, nên tổ Dân phố không nhận)",
+  "ngayBoTri": "25/9/2026",
+  "ghiChu": "File gốc ghi tổ không nhận, nhưng đã có biên bản bàn giao",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "32 Mai Thúc Loan, Huế",
+  "toaDo": null,
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ }
+];
+/* DATA-END */
+
+/* ===================== Ứng dụng (không cần sửa) ===================== */
+const LS_KEY = "nvh-phuxuan-edits-v1";
+const TT_ORDER = ["Đã bố trí","Tạm bố trí","Đã bố trí (chưa có BB)","Mượn tạm","Đề xuất","Đang xem xét","Chưa bố trí"];
+const TT_COLOR = {"Đã bố trí":"#12a150","Tạm bố trí":"#2f6fed","Đã bố trí (chưa có BB)":"#8fd3a8","Mượn tạm":"#8ab0f6","Đề xuất":"#f2b544","Đang xem xét":"#e08a00","Chưa bố trí":"#e5484d"};
+const PENDING = ["Chưa bố trí","Đề xuất","Đang xem xét"];
+const HT_OPTS = ["Tốt","Bình thường","Xuống cấp","Cần sửa chữa"];
+const WARD_TINT = [["#f1edff","#5b3fd1"],["#e9f0fe","#2f6fed"],["#e7f8ee","#12a150"],["#fff4e0","#c27400"],["#fdecec","#d93a40"],["#e6f7f8","#0e8a96"],["#fbeaf5","#b8327f"]];
+const $ = s => document.querySelector(s);
+const icon = (n, cls="ico") => `<svg class="${cls}"><use href="#i-${n}"/></svg>`;
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm = s => String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D").toLowerCase();
+
+let edits = {};
+try { edits = JSON.parse(localStorage.getItem(LS_KEY) || "{}"); } catch(e) { edits = {}; }
+const saveEdits = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(edits)); } catch(e) {} };
+const rec = id => { const base = DATA.find(d => d.id === id); const e = edits[id]; return e ? {...base, ...e, haTang:{...base.haTang, ...(e.haTang||{})}} : base; };
+const all = () => DATA.map(d => rec(d.id));
+const WARDS = [...new Set(DATA.map(d=>d.phuongCu))];
+
+const hasImg = d => Array.isArray(d.anh) && d.anh.length > 0;
+const hasHT = d => d.haTang && d.haTang.tinhTrang;
+const ttTag = t => t === "Đã bố trí" ? "g-green" : (t === "Tạm bố trí" || t === "Mượn tạm") ? "g-blue" : t === "Chưa bố trí" ? "g-red" : "g-amber";
+const htTag = t => ({"Tốt":"g-green","Bình thường":"g-blue","Xuống cấp":"g-amber","Cần sửa chữa":"g-red"}[t] || "g-slate");
+const dateKey = s => { const m = String(s||"").match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); return m ? +m[3]*1e4 + +m[2]*100 + +m[1] : 99999999; };
+const shared = d => { const m = d.diaDiem.match(/chung TDP ([^)]+)/i); return m ? m[1].trim() : ""; };
+const initials = s => s.split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
+const avStyle = d => { const t = WARD_TINT[WARDS.indexOf(d.phuongCu) % WARD_TINT.length]; return `background:${t[0]};color:${t[1]}`; };
+const pct = (a,b) => b ? Math.round(a/b*100) : 0;
+
+const state = { q:"", ward:"", bb:"", tt:"", img:"", ht:"", sort:"id", dir:1, sel:null };
+
+function filtered(){
+  const q = norm(state.q);
+  return all().filter(d =>
+    (!state.ward || d.phuongCu === state.ward) &&
+    (!state.bb || (state.bb === "yes") === d.coBienBan) &&
+    (!state.tt || (state.tt === "__pending" ? PENDING.includes(d.trangThai) : d.trangThai === state.tt)) &&
+    (!state.img || (state.img === "yes") === hasImg(d)) &&
+    (!state.ht || !hasHT(d)) &&
+    (!q || norm([d.tdp,d.phuongCu,d.diaDiem,d.file39,d.ghiChu].join(" ")).includes(q))
+  ).sort((a,b) => {
+    const k = state.sort; let x, y;
+    if (k === "ngay") { x = dateKey(a.ngayBoTri); y = dateKey(b.ngayBoTri); }
+    else if (k === "trangThai") { x = TT_ORDER.indexOf(a.trangThai); y = TT_ORDER.indexOf(b.trangThai); }
+    else { x = a[k]; y = b[k]; }
+    if (typeof x === "string") return x.localeCompare(y, "vi") * state.dir;
+    return (x - y) * state.dir;
+  });
+}
+
+function isActive(f){ return Object.keys(f).length && Object.entries(f).every(([k,v]) => state[k] === v) && ["bb","tt","img","ht"].filter(k=>!(k in f)).every(k=>!state[k]); }
+
+function renderKPIs(){
+  const A = all(), N = A.length;
+  const places = new Set(A.filter(d=>d.diaDiem && !/^Chưa có/.test(d.diaDiem)).map(d => norm(d.mapQuery || d.diaDiem))).size;
+  const bb = A.filter(d=>d.coBienBan).length, nobb = N - bb;
+  const pend = A.filter(d=>PENDING.includes(d.trangThai)).length;
+  const img = A.filter(d=>hasImg(d)).length, ht = A.filter(d=>hasHT(d)).length, td = A.filter(d=>d.toaDo).length;
+  const big = [
+    {lab:"Tổ dân phố quản lý", num:N, ic:"users", t:"t-brand", foot:`${WARDS.length} khu vực · ${places} địa điểm`, f:{}},
+    {lab:"Đã có biên bản bố trí", num:bb, of:N, ic:"check", t:"t-green", bar:[pct(bb,N),"var(--green)"], foot:`${pct(bb,N)}% hoàn thành`, f:{bb:"yes"}},
+    {lab:"Chưa có biên bản", num:nobb, ic:"alert", t:"t-red", bar:[pct(nobb,N),"var(--red)"], foot:`${pct(nobb,N)}% cần xử lý`, f:{bb:"no"}},
+    {lab:"Chưa bố trí / đang xem xét", num:pend, ic:"clock", t:"t-amber", bar:[pct(pend,N),"var(--amber)"], foot:`${pct(pend,N)}% tổng số tổ`, f:{tt:"__pending"}},
+  ];
+  $("#kpis").innerHTML = big.map((c,i) => `<button class="kpi ${isActive(c.f)?"active":""}" data-i="${i}">
+    <div class="row"><span class="lab">${c.lab}</span><span class="badge ${c.t}">${icon(c.ic)}</span></div>
+    <div class="num">${c.num}${c.of?`<small>/ ${c.of}</small>`:""}</div>
+    <div class="foot">${c.bar?`<span class="track"><i style="width:${c.bar[0]}%;background:${c.bar[1]}"></i></span>`:""}<span>${c.foot}</span></div>
+  </button>`).join("");
+  const small = [
+    {lab:"Cần bổ sung hình ảnh", num:N-img, ic:"img", t:"t-blue", f:{img:"no"}},
+    {lab:"Chưa đánh giá hạ tầng", num:N-ht, ic:"tool", t:"t-blue", f:{ht:"none"}},
+    {lab:"Chưa có tọa độ chính xác", num:N-td, ic:"target", t:"t-blue", f:null},
+    {lab:"Tổ dùng chung địa điểm", num:A.filter(d=>shared(d)).length, ic:"link", t:"t-brand", f:null},
+  ];
+  $("#kpis2").innerHTML = small.map((c,i) => `<button class="mini ${c.f&&isActive(c.f)?"active":""}" data-i="${i}" ${c.f?"":'style="cursor:default"'}>
+    <span class="badge ${c.t}">${icon(c.ic)}</span><div><b>${c.num}</b><span>${c.lab}</span></div></button>`).join("");
+  const apply = f => { if (!f) return; const on = isActive(f); Object.assign(state,{bb:"",tt:"",img:"",ht:""}); if (!on) Object.assign(state,f); syncControls(); render(); };
+  $("#kpis").querySelectorAll(".kpi").forEach(el => el.onclick = () => apply(big[+el.dataset.i].f));
+  $("#kpis2").querySelectorAll(".mini").forEach(el => el.onclick = () => apply(small[+el.dataset.i].f));
+}
+
+function renderWards(){
+  const A = all();
+  $("#wards").innerHTML = WARDS.map(w => {
+    const g = A.filter(d=>d.phuongCu===w), ok = g.filter(d=>d.coBienBan).length, no = g.length-ok;
+    return `<div class="wardrow ${state.ward===w?"active":""}" data-w="${esc(w)}">
+      <span class="nm">${esc(w)}</span>
+      <span class="stack">${ok?`<i style="flex:${ok};background:var(--green)"></i>`:""}${no?`<i style="flex:${no};background:#f6a5a8"></i>`:""}</span>
+      <span class="val"><b>${ok}</b>/${g.length}</span></div>`;
+  }).join("");
+  $("#wards").querySelectorAll(".wardrow").forEach(el => el.onclick = () => { state.ward = state.ward === el.dataset.w ? "" : el.dataset.w; syncControls(); render(); });
+}
+
+function renderDonut(){
+  const A = all(), N = A.length, R = 60, C = 2*Math.PI*R;
+  const parts = TT_ORDER.map(t => ({t, n:A.filter(d=>d.trangThai===t).length})).filter(p=>p.n);
+  let off = 0;
+  const arcs = parts.map(p => { const len = p.n/N*C; const s = `<circle r="${R}" cx="75" cy="75" fill="none" stroke="${TT_COLOR[p.t]}" stroke-width="16" stroke-dasharray="${Math.max(len-2,0.5)} ${C}" stroke-dashoffset="${-off}" transform="rotate(-90 75 75)"/>`; off += len; return s; }).join("");
+  const done = A.filter(d=>d.trangThai==="Đã bố trí").length;
+  $("#donut").innerHTML = `<div class="donut"><svg viewBox="0 0 150 150" width="100%" height="100%"><circle r="${R}" cx="75" cy="75" fill="none" stroke="var(--line2)" stroke-width="16"/>${arcs}</svg>
+    <div class="c"><div><b>${pct(done,N)}%</b><span>đã bố trí</span></div></div></div>
+    <div class="dlist">${parts.map(p=>`<button data-t="${esc(p.t)}" class="${state.tt===p.t?"active":""}"><i style="background:${TT_COLOR[p.t]}"></i><span>${esc(p.t)}</span><b>${p.n}</b></button>`).join("")}</div>`;
+  $("#donut").querySelectorAll("button").forEach(b => b.onclick = () => { state.tt = state.tt === b.dataset.t ? "" : b.dataset.t; syncControls(); render(); });
+}
+
+const LABELS = { ward:v=>v, bb:v=>v==="yes"?"Có biên bản":"Chưa có biên bản", tt:v=>v==="__pending"?"Chưa bố trí / xem xét":v, img:v=>v==="yes"?"Đã có ảnh":"Cần bổ sung ảnh", ht:()=>"Hạ tầng chưa đánh giá", q:v=>`“${v}”` };
+function renderSubbar(n){
+  const chips = Object.keys(LABELS).filter(k=>state[k]).map(k => `<span class="fchip">${esc(LABELS[k](state[k]))}<button data-k="${k}" aria-label="Bỏ lọc">×</button></span>`).join("");
+  $("#subbar").innerHTML = `<span class="cnt">Hiển thị <b>${n}</b> / ${DATA.length} tổ dân phố</span>${chips}${chips?`<button class="btn ghost" id="btnReset" style="height:30px;padding:0 10px">${icon("reset")}Xóa lọc</button>`:""}`;
+  $("#subbar").querySelectorAll(".fchip button").forEach(b => b.onclick = () => { state[b.dataset.k] = ""; syncControls(); render(); });
+  const r = $("#btnReset"); if (r) r.onclick = () => { Object.assign(state,{q:"",ward:"",bb:"",tt:"",img:"",ht:""}); syncControls(); render(); };
+}
+
+function renderTable(){
+  const rows = filtered();
+  renderSubbar(rows.length);
+  document.querySelectorAll("th[data-k]").forEach(th => th.querySelector(".arr").textContent = th.dataset.k === state.sort ? (state.dir > 0 ? "↑" : "↓") : "");
+  if (!rows.length) { $("#tbody").innerHTML = `<tr><td colspan="7" class="empty">${icon("search")}Không có nhà văn hóa nào khớp bộ lọc.</td></tr>`; return; }
+  $("#tbody").innerHTML = rows.map(d => {
+    const sh = shared(d);
+    return `<tr data-id="${d.id}" class="${state.sel===d.id?"sel":""}">
+      <td class="stt">${String(d.id).padStart(2,"0")}</td>
+      <td><div class="who"><span class="av" style="${avStyle(d)}">${initials(d.tdp)}</span><div><b>${esc(d.tdp)}</b><small>${esc(d.phuongCu)}</small></div></div></td>
+      <td class="c-addr"><div class="addr">${esc(d.diaDiem)}${sh?`<small>${icon("link")}Dùng chung với TDP ${esc(sh)}</small>`:""}</div></td>
+      <td class="c-tt"><span class="tag ${ttTag(d.trangThai)}">${esc(d.trangThai)}</span>${!d.coBienBan&&d.trangThai!=="Đã bố trí (chưa có BB)"?`<span class="tag plain g-red">Chưa có BB</span>`:""}</td>
+      <td class="c-date"><span class="date">${esc(d.ngayBoTri.split(" / ")[0]) || '<span class="muted">—</span>'}</span></td>
+      <td class="c-miss"><div class="miss">
+        <span class="${hasImg(d)?"ok":""}" title="${hasImg(d)?"Đã có ảnh":"Chưa có ảnh"}">${icon("img")}</span>
+        <span class="${hasHT(d)?"ok":""}" title="${hasHT(d)?"Hạ tầng: "+esc(d.haTang.tinhTrang):"Chưa đánh giá hạ tầng"}">${icon("tool")}</span>
+        <span class="${d.toaDo?"ok":""}" title="${d.toaDo?"Đã có tọa độ":"Chưa có tọa độ"}">${icon("target")}</span>
+      </div></td>
+      <td class="chev">${icon("chev")}</td>
+    </tr>`;
+  }).join("");
+  $("#tbody").querySelectorAll("tr[data-id]").forEach(tr => tr.onclick = () => openDetail(+tr.dataset.id));
+}
+
+function mapSrc(d){
+  if (d.toaDo && d.toaDo.length === 2) return `https://maps.google.com/maps?q=${d.toaDo[0]},${d.toaDo[1]}&z=17&output=embed`;
+  if (d.mapQuery) return `https://maps.google.com/maps?q=${encodeURIComponent(d.mapQuery)}&z=17&output=embed`;
+  return "";
+}
+function mapLink(d){
+  if (d.toaDo && d.toaDo.length === 2) return `https://www.google.com/maps/search/?api=1&query=${d.toaDo[0]},${d.toaDo[1]}`;
+  return d.mapQuery ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.mapQuery)}` : "";
+}
+
+let lastMap = "";
+function openDetail(id, editMode=false){
+  state.sel = id; const d = rec(id);
+  history.replaceState(null, "", "#tdp-" + id);
+  const src = mapSrc(d);
+  if (src !== lastMap || !$("#dMap").innerHTML) {
+    lastMap = src;
+    $("#dMap").innerHTML = (src ? `<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${src}" title="Bản đồ"></iframe><a class="open" href="${mapLink(d)}" target="_blank" rel="noopener">${icon("ext")}Mở Google Maps</a>` : `<div class="nomap"><div>${icon("pin","ico")}<br>Chưa có địa điểm để hiển thị bản đồ</div></div>`)
+      + `<button class="x" id="dClose" aria-label="Đóng">${icon("x")}</button>`;
+    $("#dClose").onclick = closeDetail;
+  }
+  $("#dAv").textContent = initials(d.tdp); $("#dAv").setAttribute("style", avStyle(d));
+  $("#dTitle").textContent = "TDP " + d.tdp;
+  $("#dSub").textContent = `STT ${d.id} · Khu vực ${d.phuongCu}`;
+  $("#dTags").innerHTML = `<span class="tag ${ttTag(d.trangThai)}">${esc(d.trangThai)}</span><span class="tag ${d.coBienBan?"g-green":"g-red"}">${d.coBienBan?"Đã có biên bản":"Chưa có biên bản"}</span>${hasHT(d)?`<span class="tag ${htTag(d.haTang.tinhTrang)}">Hạ tầng: ${esc(d.haTang.tinhTrang)}</span>`:""}`;
+  $("#dBody").innerHTML = editMode ? editForm(d) : viewHTML(d);
+  $("#dBody").scrollTop = 0;
+  if (editMode) {
+    $("#dFoot").innerHTML = `<div class="sp"></div><button class="btn" id="fCancel">Hủy</button><button class="btn primary" id="fSave">Lưu thay đổi</button>`;
+    $("#fCancel").onclick = () => openDetail(id);
+    $("#fSave").onclick = () => saveForm(id);
+  } else {
+    const list = filtered().map(x=>x.id), i = list.indexOf(id);
+    $("#dFoot").innerHTML = `<button class="btn" id="dPrev" title="Trước">${icon("left")}</button><button class="btn" id="dNext" title="Sau">${icon("chev")}</button><span class="muted" style="font-size:12.5px;margin-left:4px">${i+1} / ${list.length}</span><div class="sp"></div><button class="btn primary" id="dEdit">${icon("edit")}Cập nhật</button>`;
+    $("#dPrev").disabled = i <= 0; $("#dNext").disabled = i < 0 || i >= list.length-1;
+    $("#dPrev").onclick = () => i > 0 && openDetail(list[i-1]);
+    $("#dNext").onclick = () => i < list.length-1 && openDetail(list[i+1]);
+    $("#dEdit").onclick = () => openDetail(id, true);
+    $("#dBody").querySelectorAll(".gallery img").forEach(img => img.onclick = () => { $("#lbImg").src = img.src; $("#lightbox").classList.add("on"); });
+  }
+  $("#drawer").classList.add("on"); $("#scrim").classList.add("on"); $("#drawer").setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+  renderTable();
+}
+function closeDetail(){
+  state.sel = null; $("#drawer").classList.remove("on"); $("#scrim").classList.remove("on"); $("#drawer").setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+  history.replaceState(null, "", location.pathname + location.search); renderTable();
+}
+
+function viewHTML(d){
+  const ht = d.haTang || {}, sh = shared(d);
+  return `
+  <div class="box"><h4>${icon("pin")}Vị trí bố trí</h4>
+    <dl class="kv">
+      <dt>Địa điểm</dt><dd><b>${esc(d.diaDiem)}</b></dd>
+      ${sh?`<dt>Dùng chung</dt><dd>TDP ${esc(sh)}</dd>`:""}
+      <dt>Theo file 3.9</dt><dd>${esc(d.file39)}</dd>
+      <dt>Ngày biên bản</dt><dd>${esc(d.ngayBoTri)||'<span class="muted">Chưa có</span>'}</dd>
+      ${d.toaDo?`<dt>Tọa độ</dt><dd>${d.toaDo.join(", ")}</dd>`:""}
+    </dl>
+    ${d.ghiChu?`<div class="note">${icon("info")}<div>${esc(d.ghiChu)}</div></div>`:""}
+    ${d.toaDo||!d.mapQuery?"":`<div class="hint">Bản đồ đang tìm theo địa chỉ. Thêm tọa độ để ghim chính xác.</div>`}
+  </div>
+  <div class="box"><h4>${icon("tool")}Hạ tầng</h4>
+    ${hasHT(d)||ht.dienTich||ht.sucChua||ht.moTa?`<dl class="kv">
+      <dt>Tình trạng</dt><dd>${ht.tinhTrang?`<span class="tag ${htTag(ht.tinhTrang)}">${esc(ht.tinhTrang)}</span>`:'<span class="muted">Chưa đánh giá</span>'}</dd>
+      ${ht.dienTich?`<dt>Diện tích</dt><dd>${esc(ht.dienTich)}</dd>`:""}
+      ${ht.sucChua?`<dt>Sức chứa</dt><dd>${esc(ht.sucChua)}</dd>`:""}
+      ${ht.moTa?`<dt>Mô tả</dt><dd style="white-space:pre-line">${esc(ht.moTa)}</dd>`:""}
+    </dl>`:`<div class="placeholder">${icon("tool")}Chưa có thông tin hạ tầng</div>`}
+  </div>
+  <div class="box"><h4>${icon("img")}Hình ảnh${hasImg(d)?` <span class="muted" style="font-weight:500">(${d.anh.length})</span>`:""}</h4>
+    ${hasImg(d)?`<div class="gallery">${d.anh.map(u=>`<img src="${esc(u)}" loading="lazy" alt="Nhà văn hóa TDP ${esc(d.tdp)}">`).join("")}</div>`
+      :`<div class="placeholder">${icon("img")}Chưa có hình ảnh – cần bổ sung</div>`}
+  </div>`;
+}
+
+function editForm(d){
+  const ht = d.haTang || {};
+  return `<div class="box form">
+    <div class="note" style="margin:0 0 16px">${icon("info")}<div>Thay đổi được lưu tạm trên trình duyệt này. Để mọi người cùng thấy, bấm <b>Tải dữ liệu (JSON)</b> rồi cập nhật vào file trên GitHub.</div></div>
+    <label>Trạng thái bố trí</label>
+    <select id="e_tt">${TT_ORDER.map(t=>`<option ${t===d.trangThai?"selected":""}>${t}</option>`).join("")}</select>
+    <div class="row">
+      <div><label>Biên bản</label><select id="e_bb"><option value="1" ${d.coBienBan?"selected":""}>Đã có</option><option value="0" ${!d.coBienBan?"selected":""}>Chưa có</option></select></div>
+      <div><label>Ngày biên bản</label><input id="e_ngay" value="${esc(d.ngayBoTri)}" placeholder="dd/mm/yyyy"></div>
+    </div>
+    <label>Địa điểm bố trí</label><input id="e_dd" value="${esc(d.diaDiem)}">
+    <label>Tìm trên bản đồ theo</label><input id="e_mq" value="${esc(d.mapQuery)}">
+    <label>Tọa độ (vĩ độ, kinh độ)</label><input id="e_td" value="${d.toaDo?d.toaDo.join(", "):""}" placeholder="16.4721, 107.5794">
+    <div class="hint">Trên Google Maps: nhấp chuột phải vào vị trí → bấm dòng số tọa độ để sao chép.</div>
+  </div>
+  <div class="box form">
+    <div class="row">
+      <div><label>Tình trạng hạ tầng</label><select id="e_ht"><option value="">Chưa đánh giá</option>${HT_OPTS.map(t=>`<option ${t===ht.tinhTrang?"selected":""}>${t}</option>`).join("")}</select></div>
+      <div><label>Diện tích</label><input id="e_dt" value="${esc(ht.dienTich)}" placeholder="vd: 80 m²"></div>
+    </div>
+    <label>Sức chứa</label><input id="e_sc" value="${esc(ht.sucChua)}" placeholder="vd: 60 người">
+    <label>Mô tả hạ tầng</label><textarea id="e_mt" placeholder="Bàn ghế, âm thanh, nhà vệ sinh, điện nước…">${esc(ht.moTa)}</textarea>
+    <label>Hình ảnh (mỗi dòng một đường dẫn)</label><textarea id="e_anh" placeholder="images/${norm(d.tdp).replace(/\s+/g,'-')}-1.jpg">${esc((d.anh||[]).join("\n"))}</textarea>
+    <label>Ghi chú</label><textarea id="e_gc">${esc(d.ghiChu)}</textarea>
+  </div>`;
+}
+
+function saveForm(id){
+  const v = s => $(s).value.trim();
+  let td = null; const m = v("#e_td").match(/(-?\d+(?:\.\d+)?)\s*[,;\s]\s*(-?\d+(?:\.\d+)?)/);
+  if (m) td = [+m[1], +m[2]];
+  edits[id] = {
+    trangThai: v("#e_tt"), coBienBan: v("#e_bb") === "1", ngayBoTri: v("#e_ngay"),
+    diaDiem: v("#e_dd"), mapQuery: v("#e_mq"), toaDo: td,
+    haTang: { tinhTrang: v("#e_ht"), dienTich: v("#e_dt"), sucChua: v("#e_sc"), moTa: v("#e_mt") },
+    anh: v("#e_anh").split(/\n+/).map(s=>s.trim()).filter(Boolean), ghiChu: v("#e_gc")
+  };
+  saveEdits(); render(); openDetail(id);
+}
+
+function renderBanner(){
+  const n = Object.keys(edits).length;
+  $("#banner").classList.toggle("on", n > 0);
+  $("#bannerText").innerHTML = `Có <b>${n}</b> nhà văn hóa đã cập nhật trên trình duyệt này nhưng chưa đưa lên GitHub.`;
+}
+$("#btnExport").onclick = () => {
+  const blob = new Blob([JSON.stringify(all(), null, 1)], {type:"application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "nvh-data.json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+};
+$("#btnDiscard").onclick = () => { if (confirm("Bỏ tất cả thay đổi chưa đưa lên GitHub?")) { edits = {}; saveEdits(); render(); if (state.sel) openDetail(state.sel); } };
+
+function syncControls(){
+  $("#q").value = state.q; $("#fWard").value = state.ward; $("#fTT").value = state.tt; $("#fImg").value = state.img; $("#fHT").value = state.ht;
+  [["#fWard","ward"],["#fTT","tt"],["#fImg","img"],["#fHT","ht"]].forEach(([s,k]) => $(s).classList.toggle("on", !!state[k]));
+  $("#segBB").querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.v === state.bb));
+}
+function render(){ renderKPIs(); renderWards(); renderDonut(); renderTable(); renderBanner(); }
+
+/* init */
+$("#updated").textContent = "Cập nhật " + META.capNhat;
+$("#subtitle").textContent = `${META.donVi} · ${DATA.length} tổ dân phố thuộc ${WARDS.length} khu vực (phường cũ)`;
+$("#footer").textContent = `Nguồn: ${META.nguon}.`;
+WARDS.forEach(w => $("#fWard").insertAdjacentHTML("beforeend", `<option value="${esc(w)}">${esc(w)}</option>`));
+TT_ORDER.forEach(t => $("#fTT").insertAdjacentHTML("beforeend", `<option>${t}</option>`));
+$("#fTT").insertAdjacentHTML("beforeend", `<option value="__pending">Chưa bố trí / đề xuất / xem xét</option>`);
+$("#q").oninput = e => { state.q = e.target.value; renderTable(); };
+[["#fWard","ward"],["#fTT","tt"],["#fImg","img"],["#fHT","ht"]].forEach(([s,k]) => $(s).onchange = e => { state[k] = e.target.value; syncControls(); render(); });
+$("#segBB").querySelectorAll("button").forEach(b => b.onclick = () => { state.bb = b.dataset.v; syncControls(); render(); });
+document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => { const k = th.dataset.k; state.dir = state.sort === k ? -state.dir : 1; state.sort = k; renderTable(); });
+$("#scrim").onclick = closeDetail;
+$("#lightbox").onclick = () => $("#lightbox").classList.remove("on");
+document.addEventListener("keydown", e => { if (e.key === "Escape") { if ($("#lightbox").classList.contains("on")) $("#lightbox").classList.remove("on"); else if (state.sel) closeDetail(); } });
+syncControls(); render();
+const h = location.hash.match(/^#tdp-(\d+)$/); if (h && DATA.some(d=>d.id===+h[1])) openDetail(+h[1]);
+</script>
+</body>
+</html>
