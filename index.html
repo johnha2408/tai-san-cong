@@ -59,7 +59,7 @@ main{max-width:1320px;margin:0 auto;padding:28px 28px 48px}
 .t-brand{background:var(--brand-soft);color:var(--brand)}.t-green{background:var(--green-soft);color:var(--green)}
 .t-red{background:var(--red-soft);color:var(--red)}.t-amber{background:var(--amber-soft);color:var(--amber)}.t-blue{background:var(--blue-soft);color:var(--blue)}
 
-.kpis2{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.kpis2{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
 .mini{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;cursor:pointer;box-shadow:var(--shadow);text-align:left;transition:.15s}
 .mini:hover{border-color:#d6d9e4}
 .mini.active{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
@@ -207,14 +207,41 @@ aside.on{transform:none}
 .banner .ico{color:var(--brand)}
 .banner span{flex:1}
 
+/* GitHub connect + upload */
+.gh{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border-radius:99px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--ink2)}
+.gh i{width:8px;height:8px;border-radius:50%;background:var(--faint)}
+.gh.on i{background:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
+.modal{position:fixed;inset:0;z-index:45;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(15,23,42,.45);backdrop-filter:blur(2px)}
+.modal.on{display:flex}
+.modal .mbox{background:#fff;border-radius:18px;width:min(520px,100%);max-height:92vh;overflow:auto;box-shadow:var(--shadow-lg)}
+.modal .mhd{padding:20px 22px 4px;display:flex;align-items:center;gap:12px}
+.modal .mhd h3{margin:0;font-size:18px;font-weight:800;letter-spacing:-.01em;flex:1}
+.modal .mbd{padding:8px 22px 6px}
+.modal .mft{padding:14px 22px 20px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.steps{margin:6px 0 4px;padding-left:20px;color:var(--ink2);font-size:13px}
+.steps li{margin:4px 0}
+.steps a{color:var(--brand);font-weight:600}
+.uploader{display:flex;align-items:center;justify-content:center;gap:8px;border:1.5px dashed #cfc6f5;background:#faf8ff;color:var(--brand);border-radius:12px;padding:14px;font-weight:600;font-size:13.5px;cursor:pointer;transition:.15s;margin-top:10px}
+.uploader:hover,.uploader.drag{background:var(--brand-soft);border-color:var(--brand)}
+.uploader .ico{transform:rotate(180deg)}
+.uploader small{color:var(--muted);font-weight:500}
+.gallery .ph{position:relative}
+.gallery .ph button{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:8px;border:0;background:rgba(15,23,42,.65);color:#fff;cursor:pointer;display:grid;place-items:center;opacity:0;transition:.15s}
+.gallery .ph:hover button{opacity:1}
+.gallery .ph button .ico{width:14px;height:14px}
+@media (hover:none){.gallery .ph button{opacity:1}}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#0f172a;color:#fff;padding:11px 16px;border-radius:12px;font-size:13.5px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.toast.err{background:var(--red)}
 .lightbox{position:fixed;inset:0;background:rgba(5,8,20,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}
 .lightbox.on{display:flex}
 .lightbox img{max-width:94vw;max-height:90vh;border-radius:10px}
 footer{max-width:1320px;margin:0 auto;padding:0 28px 32px;color:var(--faint);font-size:12px}
 
 /* ---------- Responsive ---------- */
-@media (max-width:1080px){.kpis,.kpis2{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@media (max-width:1080px){.kpis{grid-template-columns:repeat(2,1fr)}.kpis2{grid-template-columns:1fr 1fr 1fr}.grid2{grid-template-columns:1fr}}
 @media (max-width:760px){
+  .kpis2{grid-template-columns:1fr}
   .topbar .in{padding:10px 16px}.pill-date{display:none}
   main{padding:18px 14px 36px}.pagehead h1{font-size:21px}
   .kpi .num{font-size:26px}
@@ -270,12 +297,14 @@ footer{max-width:1320px;margin:0 auto;padding:0 28px 32px;color:var(--faint);fon
   <div class="brand"><b>Nhà văn hóa Phú Xuân</b><span>Trung tâm Dịch vụ sự nghiệp công</span></div>
   <div class="sp"></div>
   <div class="pill-date"><svg class="ico"><use href="#i-cal"/></svg><span id="updated"></span></div>
+  <button class="gh" id="btnGH"><i></i><span id="ghLabel">Chế độ xem</span></button>
 </div></div>
 
 <main>
   <div class="banner" id="banner">
     <svg class="ico"><use href="#i-info"/></svg>
     <span id="bannerText"></span>
+    <button class="btn primary" id="btnPush" style="display:none">Đưa lên GitHub</button>
     <button class="btn" id="btnExport"><svg class="ico"><use href="#i-dl"/></svg>Tải dữ liệu (JSON)</button>
     <button class="btn ghost" id="btnDiscard">Bỏ thay đổi</button>
   </div>
@@ -358,17 +387,50 @@ footer{max-width:1320px;margin:0 auto;padding:0 28px 32px;color:var(--faint);fon
   <div class="dfoot" id="dFoot"></div>
 </aside>
 <div class="lightbox" id="lightbox"><img id="lbImg" alt=""></div>
+<div class="toast" id="toast"></div>
+<input type="file" id="fileInput" accept="image/*" multiple hidden>
+
+<div class="modal" id="ghModal"><div class="mbox">
+  <div class="mhd"><span class="badge t-brand" style="width:36px;height:36px;border-radius:10px;display:grid;place-items:center"><svg class="ico"><use href="#i-edit"/></svg></span><h3>Bật chế độ quản trị</h3><button class="btn ghost" id="ghClose" style="width:36px;padding:0;justify-content:center"><svg class="ico"><use href="#i-x"/></svg></button></div>
+  <div class="mbd form">
+    <p style="margin:0 0 6px;color:var(--ink2);font-size:13.5px">Khi bật, ảnh và thông tin bạn cập nhật sẽ <b>lưu thẳng vào repo GitHub</b>, mọi người mở web đều thấy (sau khoảng 1 phút). Mỗi máy chỉ cần làm một lần.</p>
+    <ol class="steps">
+      <li>Mở trang <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">tạo token GitHub</a> (Fine-grained token).</li>
+      <li>Repository access: chọn <b>Only select repositories</b> → chọn repo của trang này.</li>
+      <li>Permissions → Repository permissions → <b>Contents: Read and write</b>.</li>
+      <li>Bấm Generate token, sao chép và dán vào ô Token bên dưới.</li>
+    </ol>
+    <div class="row">
+      <div><label>Tài khoản GitHub</label><input id="gh_owner" placeholder="vd: johnha2408"></div>
+      <div><label>Tên repo</label><input id="gh_repo" placeholder="vd: nha-van-hoa"></div>
+    </div>
+    <div class="row">
+      <div><label>Nhánh</label><input id="gh_branch" placeholder="main"></div>
+      <div><label>Thư mục ảnh</label><input id="gh_dir" placeholder="images"></div>
+    </div>
+    <label>Token</label><input id="gh_token" type="password" placeholder="github_pat_…" autocomplete="off">
+    <div class="hint">Token chỉ lưu trên trình duyệt của máy này, không nằm trong trang web. Không bật trên máy dùng chung.</div>
+  </div>
+  <div class="mft">
+    <button class="btn ghost" id="ghLogout" style="margin-right:auto;color:var(--red)">Tắt chế độ quản trị</button>
+    <button class="btn" id="ghCancel">Hủy</button>
+    <button class="btn primary" id="ghSave">Kết nối</button>
+  </div>
+</div></div>
 
 <script>
 /* =====================================================================
    CẬP NHẬT DỮ LIỆU
+   - Cách dễ nhất: bấm "Chế độ xem" (góc trên bên phải) → nhập token GitHub.
+     Từ đó tải ảnh / sửa thông tin sẽ lưu thẳng vào repo (file data.json và
+     thư mục images/). Mảng DATA bên dưới chỉ là dữ liệu ban đầu.
    - Sửa trực tiếp mảng DATA bên dưới, hoặc bấm "Cập nhật" trên từng nhà
      văn hóa → "Tải dữ liệu (JSON)" → dán đè vào giữa hai dòng
      DATA-START / DATA-END.
    - anh: danh sách đường dẫn ảnh, ví dụ ["images/dong-ba-1.jpg"]
      (upload ảnh vào thư mục images/ trong repo) hoặc link ảnh đầy đủ.
-   - toaDo: [vĩ độ, kinh độ], ví dụ [16.4721, 107.5794] – nếu có, bản đồ
-     sẽ ghim đúng vị trí thay vì tìm theo địa chỉ (mapQuery).
+   - Bản đồ tự tìm theo địa chỉ đầu tiên trong "diaDiem" + ", Huế".
+     Chỉ điền "mapQuery" khi muốn tìm theo cụm khác (vd tên trường học).
    - haTang.tinhTrang: "Tốt" | "Bình thường" | "Xuống cấp" | "Cần sửa chữa"
    ===================================================================== */
 const META = {
@@ -377,7 +439,7 @@ const META = {
   capNhat: "27/11/2026"
 };
 /* DATA-START */
-const DATA = [
+let DATA = [
  {
   "id": 1,
   "phuongCu": "Đông Ba",
@@ -388,8 +450,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "15 Trần Hưng Đạo, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -408,8 +469,7 @@ const DATA = [
   "ghiChu": "File gốc ghi dự kiến",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "77 Đào Duy Từ, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -428,8 +488,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "30 Nguyễn Biểu, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -448,8 +507,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "42 Lê Thánh Tôn, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -468,8 +526,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí; biên bản có thêm 107 Nhật Lệ",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "103 Nhật Lệ, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -488,8 +545,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "Kiệt 68 Phùng Hưng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -508,8 +564,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí; biên bản có thêm 107 Nhật Lệ",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "103 Nhật Lệ, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -528,8 +583,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "224 Bạch Đằng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -548,8 +602,7 @@ const DATA = [
   "ghiChu": "Số nhà trên biên bản bị viết đè; ghi theo file gốc",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "236 Chi Lăng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -568,8 +621,7 @@ const DATA = [
   "ghiChu": "Biên bản tạm bố trí mới hơn file gốc",
   "coBienBan": true,
   "trangThai": "Tạm bố trí",
-  "mapQuery": "130 Chi Lăng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -588,8 +640,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Đã bố trí (chưa có BB)",
-  "mapQuery": "Trần Quang Long, Gia Hội, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -608,8 +659,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "8 Chùa Ông, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -628,8 +678,7 @@ const DATA = [
   "ghiChu": "Ngày biên bản 152 Chi Lăng là 26/8 (file gốc ghi 29/8); có thêm biên bản tạm bố trí 130 Chi Lăng",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "152 Chi Lăng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -648,8 +697,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Đã bố trí (chưa có BB)",
-  "mapQuery": "118 Nguyễn Chí Thanh, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -668,8 +716,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "328 Chi Lăng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -688,8 +735,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "12/20 Lê Đình Chinh, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -708,8 +754,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "444 Chi Lăng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -728,8 +773,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "24 Ngô Kha, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -748,8 +792,7 @@ const DATA = [
   "ghiChu": "Ngày biên bản 28/8 (file gốc ghi 29/8)",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "425 Chi Lăng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -768,8 +811,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "44 Ngô Nhân Tịnh, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -789,7 +831,6 @@ const DATA = [
   "coBienBan": true,
   "trangThai": "Đã bố trí",
   "mapQuery": "Chung cư Đoàn Nguyễn Tuấn, Huế",
-  "toaDo": null,
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -808,8 +849,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "328 Chi Lăng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -828,8 +868,7 @@ const DATA = [
   "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "36 La Sơn Phu Tử, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -848,8 +887,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "95 Tăng Bạt Hổ, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -868,8 +906,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Chưa bố trí",
-  "mapQuery": "32 Thái Phiên, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -888,8 +925,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "136 Lê Đại Hành, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -908,8 +944,7 @@ const DATA = [
   "ghiChu": "Ngày biên bản 26/8 (file gốc ghi 28/8)",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "32 Thái Phiên, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -928,8 +963,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Đề xuất",
-  "mapQuery": "512 Lê Duẩn, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -948,8 +982,7 @@ const DATA = [
   "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "44 Trần Quốc Toản, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -968,8 +1001,7 @@ const DATA = [
   "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "40 Hòa Mỹ, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -988,8 +1020,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "49A Thánh Gióng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1008,8 +1039,7 @@ const DATA = [
   "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "49 Đạm Phương, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1028,8 +1058,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Mượn tạm",
-  "mapQuery": "127 Nguyễn Trãi, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1048,8 +1077,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Đang xem xét",
-  "mapQuery": "69 Lê Huân, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1068,8 +1096,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "248A Lê Duẩn, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1088,8 +1115,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Mượn tạm",
-  "mapQuery": "Trường Tiểu học Thuận Hòa, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1109,7 +1135,6 @@ const DATA = [
   "coBienBan": false,
   "trangThai": "Chưa bố trí",
   "mapQuery": "",
-  "toaDo": null,
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1128,8 +1153,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": false,
   "trangThai": "Mượn tạm",
-  "mapQuery": "127 Nguyễn Trãi, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1148,8 +1172,7 @@ const DATA = [
   "ghiChu": "Biên bản ghi 32 Mang Cá; ghi theo file gốc",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "115B Thánh Gióng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1168,8 +1191,7 @@ const DATA = [
   "ghiChu": "Biên bản mới ghi 405 Tăng Bạt Hổ",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "405 Tăng Bạt Hổ, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1188,8 +1210,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "79 Đào Duy Anh, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1208,8 +1229,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "31/16 Lương Y, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1228,8 +1248,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "28 Đào Duy Anh, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1248,8 +1267,7 @@ const DATA = [
   "ghiChu": "",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "53 Lê Văn Hưu, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1268,8 +1286,7 @@ const DATA = [
   "ghiChu": "File gốc ghi chưa bố trí",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "Kiệt 137 Đinh Tiên Hoàng, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1288,8 +1305,7 @@ const DATA = [
   "ghiChu": "Biên bản ghi 18 Thế Lữ; ghi theo file gốc",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "16 Thế Lữ, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1308,8 +1324,7 @@ const DATA = [
   "ghiChu": "File gốc ghi tổ không nhận, nhưng đã có biên bản bàn giao",
   "coBienBan": true,
   "trangThai": "Đã bố trí",
-  "mapQuery": "32 Mai Thúc Loan, Huế",
-  "toaDo": null,
+  "mapQuery": "",
   "haTang": {
    "tinhTrang": "",
    "dienTich": "",
@@ -1338,6 +1353,137 @@ try { edits = JSON.parse(localStorage.getItem(LS_KEY) || "{}"); } catch(e) { edi
 const saveEdits = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(edits)); } catch(e) {} };
 const rec = id => { const base = DATA.find(d => d.id === id); const e = edits[id]; return e ? {...base, ...e, haTang:{...base.haTang, ...(e.haTang||{})}} : base; };
 const all = () => DATA.map(d => rec(d.id));
+
+/* ---------- Lưu trữ GitHub ---------- */
+const GH_KEY = "nvh-phuxuan-github-v1";
+const DATA_FILE = "data.json";
+const previews = {};   // ảnh vừa tải lên: hiện ngay trong lúc GitHub Pages cập nhật
+let ghCfg = null;
+try { ghCfg = JSON.parse(localStorage.getItem(GH_KEY) || "null"); } catch(e) {}
+const ghOn = () => !!(ghCfg && ghCfg.token && ghCfg.owner && ghCfg.repo);
+const b64utf8 = str => { const bytes = new TextEncoder().encode(str); let bin = ""; for (let i=0;i<bytes.length;i+=0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i,i+0x8000)); return btoa(bin); };
+const utf8b64 = b64 => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g,"")), c => c.charCodeAt(0)));
+async function gh(path, opts={}){
+  const url = `https://api.github.com/repos/${ghCfg.owner}/${ghCfg.repo}/contents/${path}` + (opts.method ? "" : `?ref=${encodeURIComponent(ghCfg.branch||"main")}&t=${Date.now()}`);
+  const r = await fetch(url, { ...opts, cache:"no-store", headers:{ "Accept":"application/vnd.github+json", "Authorization":`Bearer ${ghCfg.token}`, ...(opts.body?{"Content-Type":"application/json"}:{}) } });
+  if (r.status === 404 && !opts.method) return null;
+  if (!r.ok) { let m = ""; try { m = (await r.json()).message; } catch(e) {} const err = new Error(r.status === 401 ? "Token không hợp lệ hoặc đã hết hạn" : (r.status === 403 || r.status === 404) ? "Token không có quyền ghi vào repo này" : (m || "Lỗi GitHub " + r.status)); err.status = r.status; throw err; }
+  return r.json();
+}
+const ghPut = (path, b64, message, sha) => gh(path, { method:"PUT", body: JSON.stringify({ message, content:b64, branch: ghCfg.branch||"main", ...(sha?{sha}:{}) }) });
+async function ghDelete(path, message){ const f = await gh(path); if (!f) return; await gh(path, { method:"DELETE", body: JSON.stringify({ message, sha:f.sha, branch: ghCfg.branch||"main" }) }); }
+
+/* Ghi thay đổi vào data.json – luôn đọc bản mới nhất trước để không ghi đè người khác */
+async function pushRecords(patches, message){
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const f = await gh(DATA_FILE);
+    let remote = DATA.map(d => ({...d}));
+    if (f) { try { remote = JSON.parse(utf8b64(f.content)); } catch(e) {} }
+    Object.entries(patches).forEach(([id, p]) => {
+      const i = remote.findIndex(d => d.id === +id);
+      if (i >= 0) remote[i] = {...remote[i], ...p, haTang:{...(remote[i].haTang||{}), ...(p.haTang||{})}};
+    });
+    try { await ghPut(DATA_FILE, b64utf8(JSON.stringify(remote, null, 1)), message, f && f.sha); DATA = remote; return; }
+    catch(e) { if (attempt === 2 || !(e.status === 409 || e.status === 422)) throw e; }
+  }
+}
+
+/* Nén ảnh trước khi tải lên: cạnh dài tối đa 1600px, JPEG */
+function compress(file, max=1600, q=0.82){
+  return new Promise((ok, fail) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => { const k = Math.min(1, max/Math.max(img.width, img.height)); const c = document.createElement("canvas"); c.width = Math.round(img.width*k); c.height = Math.round(img.height*k); const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0,0,c.width,c.height); g.drawImage(img,0,0,c.width,c.height); URL.revokeObjectURL(url); ok(c.toDataURL("image/jpeg", q)); };
+    img.onerror = () => { URL.revokeObjectURL(url); fail(new Error("Không đọc được file ảnh " + file.name)); };
+    img.src = url;
+  });
+}
+const slug = s => norm(s).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const imgSrc = u => previews[u] || u;
+
+let toastT;
+function toast(msg, err=false, ms=3200){ const t = $("#toast"); t.textContent = msg; t.classList.toggle("err", err); t.classList.add("on"); clearTimeout(toastT); if (ms) toastT = setTimeout(()=>t.classList.remove("on"), ms); }
+
+async function uploadImages(id, files){
+  if (!ghOn()) { openGH(); toast("Bật chế độ quản trị để tải ảnh lên"); return; }
+  files = [...files].filter(f => f.type.startsWith("image/"));
+  if (!files.length) return;
+  const d = rec(id), added = [];
+  const saveList = () => pushRecords({ [id]: { anh: [...(rec(id).anh||[]), ...added] } }, `Cập nhật ảnh NVH TDP ${d.tdp}`);
+  try {
+    for (let i = 0; i < files.length; i++) {
+      toast(`Đang tải ảnh ${i+1}/${files.length}…`, false, 0);
+      const dataUrl = await compress(files[i]);
+      const path = `${(ghCfg.dir||"images").replace(/^\/|\/$/g,"")}/tdp-${String(id).padStart(2,"0")}-${slug(d.tdp)}-${Date.now()}.jpg`;
+      await ghPut(path, dataUrl.split(",")[1], `Thêm ảnh NVH TDP ${d.tdp}`);
+      previews[path] = dataUrl; added.push(path);
+    }
+    toast("Đang lưu dữ liệu…", false, 0);
+    await saveList();
+    render(); if (state.sel === id) openDetail(id);
+    toast(`Đã lưu ${added.length} ảnh lên GitHub. Người khác sẽ thấy sau khoảng 1 phút.`, false, 4500);
+  } catch(e) {
+    if (added.length) { await saveList().catch(()=>{}); render(); if (state.sel === id) openDetail(id); }
+    toast("Không tải được ảnh: " + e.message, true, 6000);
+  }
+}
+async function removeImage(id, path){
+  if (!ghOn()) { openGH(); return; }
+  if (!confirm("Xóa ảnh này khỏi nhà văn hóa?")) return;
+  const d = rec(id);
+  try {
+    toast("Đang xóa ảnh…", false, 0);
+    await pushRecords({ [id]: { anh: (d.anh||[]).filter(u => u !== path) } }, `Xóa ảnh NVH TDP ${d.tdp}`);
+    if (!/^https?:/i.test(path)) await ghDelete(path, `Xóa file ảnh NVH TDP ${d.tdp}`).catch(()=>{});
+    render(); openDetail(id); toast("Đã xóa ảnh.");
+  } catch(e) { toast("Không xóa được: " + e.message, true, 6000); }
+}
+
+function guessRepo(){
+  const h = location.hostname.match(/^([^.]+)\.github\.io$/i);
+  if (!h) return {owner:"", repo:""};
+  const seg = location.pathname.split("/").filter(Boolean)[0] || "";
+  return { owner:h[1], repo: seg && !/\.html?$/i.test(seg) ? seg : `${h[1]}.github.io` };
+}
+function openGH(){
+  const g = guessRepo(), c = ghCfg || {};
+  $("#gh_owner").value = c.owner || g.owner; $("#gh_repo").value = c.repo || g.repo;
+  $("#gh_branch").value = c.branch || "main"; $("#gh_dir").value = c.dir || "images"; $("#gh_token").value = c.token || "";
+  $("#ghLogout").style.display = ghOn() ? "" : "none";
+  $("#ghModal").classList.add("on");
+}
+function renderGH(){
+  $("#btnGH").classList.toggle("on", ghOn());
+  $("#ghLabel").textContent = ghOn() ? "Đang quản trị" : "Chế độ xem";
+}
+$("#btnGH").onclick = openGH;
+$("#ghClose").onclick = $("#ghCancel").onclick = () => $("#ghModal").classList.remove("on");
+$("#ghLogout").onclick = () => { ghCfg = null; try { localStorage.removeItem(GH_KEY); } catch(e) {} $("#ghModal").classList.remove("on"); renderGH(); render(); if (state.sel) openDetail(state.sel); toast("Đã tắt chế độ quản trị trên máy này."); };
+$("#ghSave").onclick = async () => {
+  const c = { owner:$("#gh_owner").value.trim(), repo:$("#gh_repo").value.trim(), branch:$("#gh_branch").value.trim()||"main", dir:$("#gh_dir").value.trim()||"images", token:$("#gh_token").value.trim() };
+  if (!c.owner || !c.repo || !c.token) { toast("Điền đủ tài khoản, tên repo và token", true); return; }
+  const btn = $("#ghSave"); btn.disabled = true; btn.textContent = "Đang kiểm tra…";
+  try {
+    const r = await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}`, { headers:{ "Accept":"application/vnd.github+json", "Authorization":`Bearer ${c.token}` } });
+    if (!r.ok) throw new Error(r.status === 401 ? "Token không hợp lệ" : "Không tìm thấy repo hoặc token không có quyền truy cập repo này");
+    const info = await r.json();
+    if (info.permissions && !info.permissions.push) throw new Error("Token chưa có quyền ghi (Contents: Read and write)");
+    ghCfg = c; try { localStorage.setItem(GH_KEY, JSON.stringify(c)); } catch(e) {}
+    $("#ghModal").classList.remove("on"); renderGH();
+    await loadRemote(); render(); if (state.sel) openDetail(state.sel);
+    toast("Đã bật chế độ quản trị. Ảnh và thông tin sẽ lưu thẳng lên GitHub.", false, 4500);
+  } catch(e) { toast(e.message, true, 6000); }
+  finally { btn.disabled = false; btn.textContent = "Kết nối"; }
+};
+
+/* Đọc data.json mới nhất (nếu có): khách xem đọc qua GitHub Pages, quản trị đọc thẳng từ GitHub */
+async function loadRemote(){
+  try {
+    let remote = null;
+    if (ghOn()) { const f = await gh(DATA_FILE); if (f) remote = JSON.parse(utf8b64(f.content)); }
+    else if (location.protocol.startsWith("http")) { const r = await fetch(DATA_FILE + "?v=" + Date.now(), {cache:"no-store"}); if (r.ok) remote = await r.json(); }
+    if (Array.isArray(remote) && remote.length) DATA = remote;
+  } catch(e) { /* chưa có data.json → dùng dữ liệu có sẵn trong trang */ }
+}
 const WARDS = [...new Set(DATA.map(d=>d.phuongCu))];
 
 const hasImg = d => Array.isArray(d.anh) && d.anh.length > 0;
@@ -1378,7 +1524,7 @@ function renderKPIs(){
   const places = new Set(A.filter(d=>d.diaDiem && !/^Chưa có/.test(d.diaDiem)).map(d => norm(d.mapQuery || d.diaDiem))).size;
   const bb = A.filter(d=>d.coBienBan).length, nobb = N - bb;
   const pend = A.filter(d=>PENDING.includes(d.trangThai)).length;
-  const img = A.filter(d=>hasImg(d)).length, ht = A.filter(d=>hasHT(d)).length, td = A.filter(d=>d.toaDo).length;
+  const img = A.filter(d=>hasImg(d)).length, ht = A.filter(d=>hasHT(d)).length;
   const big = [
     {lab:"Tổ dân phố quản lý", num:N, ic:"users", t:"t-brand", foot:`${WARDS.length} khu vực · ${places} địa điểm`, f:{}},
     {lab:"Đã có biên bản bố trí", num:bb, of:N, ic:"check", t:"t-green", bar:[pct(bb,N),"var(--green)"], foot:`${pct(bb,N)}% hoàn thành`, f:{bb:"yes"}},
@@ -1393,7 +1539,6 @@ function renderKPIs(){
   const small = [
     {lab:"Cần bổ sung hình ảnh", num:N-img, ic:"img", t:"t-blue", f:{img:"no"}},
     {lab:"Chưa đánh giá hạ tầng", num:N-ht, ic:"tool", t:"t-blue", f:{ht:"none"}},
-    {lab:"Chưa có tọa độ chính xác", num:N-td, ic:"target", t:"t-blue", f:null},
     {lab:"Tổ dùng chung địa điểm", num:A.filter(d=>shared(d)).length, ic:"link", t:"t-brand", f:null},
   ];
   $("#kpis2").innerHTML = small.map((c,i) => `<button class="mini ${c.f&&isActive(c.f)?"active":""}" data-i="${i}" ${c.f?"":'style="cursor:default"'}>
@@ -1451,7 +1596,6 @@ function renderTable(){
       <td class="c-miss"><div class="miss">
         <span class="${hasImg(d)?"ok":""}" title="${hasImg(d)?"Đã có ảnh":"Chưa có ảnh"}">${icon("img")}</span>
         <span class="${hasHT(d)?"ok":""}" title="${hasHT(d)?"Hạ tầng: "+esc(d.haTang.tinhTrang):"Chưa đánh giá hạ tầng"}">${icon("tool")}</span>
-        <span class="${d.toaDo?"ok":""}" title="${d.toaDo?"Đã có tọa độ":"Chưa có tọa độ"}">${icon("target")}</span>
       </div></td>
       <td class="chev">${icon("chev")}</td>
     </tr>`;
@@ -1459,14 +1603,21 @@ function renderTable(){
   $("#tbody").querySelectorAll("tr[data-id]").forEach(tr => tr.onclick = () => openDetail(+tr.dataset.id));
 }
 
+function addrOf(d){
+  let a = String(d.diaDiem||"").replace(/^(Tạm bố trí|Mượn)\s*/i,"");
+  if (!a || /^Chưa có/i.test(a)) return "";
+  a = a.split(/;|,| và | hoặc |\(| – | - | \+ /)[0].trim();
+  return a ? a + ", Huế" : "";
+}
+const mapQ = d => d.mapQuery || addrOf(d);
 function mapSrc(d){
   if (d.toaDo && d.toaDo.length === 2) return `https://maps.google.com/maps?q=${d.toaDo[0]},${d.toaDo[1]}&z=17&output=embed`;
-  if (d.mapQuery) return `https://maps.google.com/maps?q=${encodeURIComponent(d.mapQuery)}&z=17&output=embed`;
+  if (mapQ(d)) return `https://maps.google.com/maps?q=${encodeURIComponent(mapQ(d))}&z=17&output=embed`;
   return "";
 }
 function mapLink(d){
   if (d.toaDo && d.toaDo.length === 2) return `https://www.google.com/maps/search/?api=1&query=${d.toaDo[0]},${d.toaDo[1]}`;
-  return d.mapQuery ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.mapQuery)}` : "";
+  return mapQ(d) ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQ(d))}` : "";
 }
 
 let lastMap = "";
@@ -1498,6 +1649,12 @@ function openDetail(id, editMode=false){
     $("#dNext").onclick = () => i < list.length-1 && openDetail(list[i+1]);
     $("#dEdit").onclick = () => openDetail(id, true);
     $("#dBody").querySelectorAll(".gallery img").forEach(img => img.onclick = () => { $("#lbImg").src = img.src; $("#lightbox").classList.add("on"); });
+    $("#dBody").querySelectorAll("[data-del]").forEach(b => b.onclick = e => { e.stopPropagation(); removeImage(id, b.dataset.del); });
+    const up = $("#uploader");
+    up.onclick = () => { if (!ghOn()) { openGH(); return; } const fi = $("#fileInput"); fi.value = ""; fi.onchange = () => uploadImages(id, fi.files); fi.click(); };
+    up.ondragover = e => { e.preventDefault(); up.classList.add("drag"); };
+    up.ondragleave = () => up.classList.remove("drag");
+    up.ondrop = e => { e.preventDefault(); up.classList.remove("drag"); uploadImages(id, e.dataTransfer.files); };
   }
   $("#drawer").classList.add("on"); $("#scrim").classList.add("on"); $("#drawer").setAttribute("aria-hidden","false");
   document.body.style.overflow = "hidden";
@@ -1518,10 +1675,9 @@ function viewHTML(d){
       ${sh?`<dt>Dùng chung</dt><dd>TDP ${esc(sh)}</dd>`:""}
       <dt>Theo file 3.9</dt><dd>${esc(d.file39)}</dd>
       <dt>Ngày biên bản</dt><dd>${esc(d.ngayBoTri)||'<span class="muted">Chưa có</span>'}</dd>
-      ${d.toaDo?`<dt>Tọa độ</dt><dd>${d.toaDo.join(", ")}</dd>`:""}
+      ${mapQ(d)?`<dt>Tìm trên bản đồ</dt><dd>${esc(mapQ(d))}</dd>`:""}
     </dl>
     ${d.ghiChu?`<div class="note">${icon("info")}<div>${esc(d.ghiChu)}</div></div>`:""}
-    ${d.toaDo||!d.mapQuery?"":`<div class="hint">Bản đồ đang tìm theo địa chỉ. Thêm tọa độ để ghim chính xác.</div>`}
   </div>
   <div class="box"><h4>${icon("tool")}Hạ tầng</h4>
     ${hasHT(d)||ht.dienTich||ht.sucChua||ht.moTa?`<dl class="kv">
@@ -1532,25 +1688,25 @@ function viewHTML(d){
     </dl>`:`<div class="placeholder">${icon("tool")}Chưa có thông tin hạ tầng</div>`}
   </div>
   <div class="box"><h4>${icon("img")}Hình ảnh${hasImg(d)?` <span class="muted" style="font-weight:500">(${d.anh.length})</span>`:""}</h4>
-    ${hasImg(d)?`<div class="gallery">${d.anh.map(u=>`<img src="${esc(u)}" loading="lazy" alt="Nhà văn hóa TDP ${esc(d.tdp)}">`).join("")}</div>`
+    ${hasImg(d)?`<div class="gallery">${d.anh.map(u=>`<div class="ph"><img src="${esc(imgSrc(u))}" loading="lazy" alt="Nhà văn hóa TDP ${esc(d.tdp)}">${ghOn()?`<button data-del="${esc(u)}" title="Xóa ảnh">${icon("x")}</button>`:""}</div>`).join("")}</div>`
       :`<div class="placeholder">${icon("img")}Chưa có hình ảnh – cần bổ sung</div>`}
+    <div class="uploader" id="uploader">${icon("dl")}<span>Tải ảnh lên <small>· chọn hoặc kéo thả nhiều ảnh</small></span></div>
+    ${ghOn()?"":`<div class="hint">Cần bật <b>chế độ quản trị</b> (nút góc trên bên phải) để tải ảnh lên.</div>`}
   </div>`;
 }
 
 function editForm(d){
   const ht = d.haTang || {};
   return `<div class="box form">
-    <div class="note" style="margin:0 0 16px">${icon("info")}<div>Thay đổi được lưu tạm trên trình duyệt này. Để mọi người cùng thấy, bấm <b>Tải dữ liệu (JSON)</b> rồi cập nhật vào file trên GitHub.</div></div>
+    ${ghOn()?"":`<div class="note" style="margin:0 0 16px">${icon("info")}<div>Chưa bật chế độ quản trị: thay đổi chỉ lưu tạm trên trình duyệt này. Bật chế độ quản trị (góc trên bên phải) để lưu thẳng lên GitHub.</div></div>`}
     <label>Trạng thái bố trí</label>
     <select id="e_tt">${TT_ORDER.map(t=>`<option ${t===d.trangThai?"selected":""}>${t}</option>`).join("")}</select>
     <div class="row">
       <div><label>Biên bản</label><select id="e_bb"><option value="1" ${d.coBienBan?"selected":""}>Đã có</option><option value="0" ${!d.coBienBan?"selected":""}>Chưa có</option></select></div>
       <div><label>Ngày biên bản</label><input id="e_ngay" value="${esc(d.ngayBoTri)}" placeholder="dd/mm/yyyy"></div>
     </div>
-    <label>Địa điểm bố trí</label><input id="e_dd" value="${esc(d.diaDiem)}">
-    <label>Tìm trên bản đồ theo</label><input id="e_mq" value="${esc(d.mapQuery)}">
-    <label>Tọa độ (vĩ độ, kinh độ)</label><input id="e_td" value="${d.toaDo?d.toaDo.join(", "):""}" placeholder="16.4721, 107.5794">
-    <div class="hint">Trên Google Maps: nhấp chuột phải vào vị trí → bấm dòng số tọa độ để sao chép.</div>
+    <label>Địa điểm bố trí</label><input id="e_dd" value="${esc(d.diaDiem)}" placeholder="vd: 15 Trần Hưng Đạo">
+    <div class="hint">Bản đồ tự tìm theo địa chỉ đầu tiên trong ô này, kèm “Huế”.</div>
   </div>
   <div class="box form">
     <div class="row">
@@ -1559,33 +1715,42 @@ function editForm(d){
     </div>
     <label>Sức chứa</label><input id="e_sc" value="${esc(ht.sucChua)}" placeholder="vd: 60 người">
     <label>Mô tả hạ tầng</label><textarea id="e_mt" placeholder="Bàn ghế, âm thanh, nhà vệ sinh, điện nước…">${esc(ht.moTa)}</textarea>
-    <label>Hình ảnh (mỗi dòng một đường dẫn)</label><textarea id="e_anh" placeholder="images/${norm(d.tdp).replace(/\s+/g,'-')}-1.jpg">${esc((d.anh||[]).join("\n"))}</textarea>
+    <label>Đường dẫn ảnh (tự điền khi tải ảnh lên, thường không cần sửa)</label><textarea id="e_anh" placeholder="images/${norm(d.tdp).replace(/\s+/g,'-')}-1.jpg">${esc((d.anh||[]).join("\n"))}</textarea>
     <label>Ghi chú</label><textarea id="e_gc">${esc(d.ghiChu)}</textarea>
   </div>`;
 }
 
-function saveForm(id){
+async function saveForm(id){
   const v = s => $(s).value.trim();
-  let td = null; const m = v("#e_td").match(/(-?\d+(?:\.\d+)?)\s*[,;\s]\s*(-?\d+(?:\.\d+)?)/);
-  if (m) td = [+m[1], +m[2]];
-  edits[id] = {
+  const patch = {
     trangThai: v("#e_tt"), coBienBan: v("#e_bb") === "1", ngayBoTri: v("#e_ngay"),
-    diaDiem: v("#e_dd"), mapQuery: v("#e_mq"), toaDo: td,
+    diaDiem: v("#e_dd"), mapQuery: "",
     haTang: { tinhTrang: v("#e_ht"), dienTich: v("#e_dt"), sucChua: v("#e_sc"), moTa: v("#e_mt") },
     anh: v("#e_anh").split(/\n+/).map(s=>s.trim()).filter(Boolean), ghiChu: v("#e_gc")
   };
-  saveEdits(); render(); openDetail(id);
+  if (ghOn()) {
+    const btn = $("#fSave"); btn.disabled = true; btn.textContent = "Đang lưu…";
+    try { await pushRecords({[id]: patch}, `Cập nhật NVH TDP ${rec(id).tdp}`); delete edits[id]; saveEdits(); render(); openDetail(id); toast("Đã lưu lên GitHub. Người khác sẽ thấy sau khoảng 1 phút.", false, 4500); }
+    catch(e) { toast("Không lưu được: " + e.message, true, 6000); btn.disabled = false; btn.textContent = "Lưu thay đổi"; }
+    return;
+  }
+  edits[id] = patch; saveEdits(); render(); openDetail(id);
 }
 
 function renderBanner(){
   const n = Object.keys(edits).length;
   $("#banner").classList.toggle("on", n > 0);
   $("#bannerText").innerHTML = `Có <b>${n}</b> nhà văn hóa đã cập nhật trên trình duyệt này nhưng chưa đưa lên GitHub.`;
+  $("#btnPush").style.display = ghOn() ? "" : "none";
 }
 $("#btnExport").onclick = () => {
   const blob = new Blob([JSON.stringify(all(), null, 1)], {type:"application/json"});
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "nvh-data.json"; a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+};
+$("#btnPush").onclick = async () => {
+  try { toast("Đang đưa lên GitHub…", false, 0); await pushRecords({...edits}, `Cập nhật ${Object.keys(edits).length} nhà văn hóa`); edits = {}; saveEdits(); render(); if (state.sel) openDetail(state.sel); toast("Đã đưa tất cả thay đổi lên GitHub."); }
+  catch(e) { toast("Không lưu được: " + e.message, true, 6000); }
 };
 $("#btnDiscard").onclick = () => { if (confirm("Bỏ tất cả thay đổi chưa đưa lên GitHub?")) { edits = {}; saveEdits(); render(); if (state.sel) openDetail(state.sel); } };
 
@@ -1610,8 +1775,9 @@ document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => { const
 $("#scrim").onclick = closeDetail;
 $("#lightbox").onclick = () => $("#lightbox").classList.remove("on");
 document.addEventListener("keydown", e => { if (e.key === "Escape") { if ($("#lightbox").classList.contains("on")) $("#lightbox").classList.remove("on"); else if (state.sel) closeDetail(); } });
-syncControls(); render();
+syncControls(); renderGH(); render();
 const h = location.hash.match(/^#tdp-(\d+)$/); if (h && DATA.some(d=>d.id===+h[1])) openDetail(+h[1]);
+loadRemote().then(() => { render(); if (state.sel) openDetail(state.sel); });
 </script>
 </body>
 </html>
