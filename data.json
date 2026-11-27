@@ -1,0 +1,900 @@
+[
+ {
+  "id": 1,
+  "phuongCu": "Đông Ba",
+  "tdp": "Đông Ba",
+  "diaDiem": "15 Trần Hưng Đạo",
+  "file39": "15 Trần Hưng Đạo (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 2,
+  "phuongCu": "Đông Ba",
+  "tdp": "Phú Hòa",
+  "diaDiem": "77 Đào Duy Từ",
+  "file39": "Dự kiến 77 Đào Duy Từ (Chưa bàn giao cho TTDVSNC)  hoặc mượn Trụ Sở Công an 70 Phan Đăng Lưu.",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi dự kiến",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 3,
+  "phuongCu": "Đông Ba",
+  "tdp": "Thái Trạch",
+  "diaDiem": "30 Nguyễn Biểu",
+  "file39": "30 Nguyễn Biểu (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 4,
+  "phuongCu": "Đông Ba",
+  "tdp": "Trung Tích",
+  "diaDiem": "42 Lê Thánh Tôn",
+  "file39": "42 Lê Thánh Tôn (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 5,
+  "phuongCu": "Đông Ba",
+  "tdp": "Thành Nội",
+  "diaDiem": "103 Nhật Lệ, 107 Nhật Lệ (Trụ sở ANCS) – bố trí chung TDP Tịnh Tâm",
+  "file39": "103 Nhật Lê – Tịnh Tâm (Bố trí chung TDp Tịnh Tâm, Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí; biên bản có thêm 107 Nhật Lệ",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 6,
+  "phuongCu": "Đông Ba",
+  "tdp": "Thuận Thành",
+  "diaDiem": "Kiệt 68 Phùng Hưng",
+  "file39": "Kiệt 68 Phùng Hưng (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 7,
+  "phuongCu": "Đông Ba",
+  "tdp": "Tịnh Tâm",
+  "diaDiem": "103 Nhật Lệ, 107 Nhật Lệ (Trụ sở ANCS) – bố trí chung TDP Thành Nội",
+  "file39": "103 Nhật Lê – (Bố trí chung TDP Thành Nội,Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí; biên bản có thêm 107 Nhật Lệ",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 8,
+  "phuongCu": "Gia Hội",
+  "tdp": "An Mỹ",
+  "diaDiem": "224 Bạch Đằng",
+  "file39": "224 Bạch Đằng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 9,
+  "phuongCu": "Gia Hội",
+  "tdp": "Đệ Lục",
+  "diaDiem": "236 Chi Lăng và 58 Mạc Đĩnh Chi",
+  "file39": "236 Chi Lăng và 58 Mạc Đỉnh Chi (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Số nhà trên biên bản bị viết đè; ghi theo file gốc",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 10,
+  "phuongCu": "Gia Hội",
+  "tdp": "Gia Hội",
+  "diaDiem": "Tạm bố trí 130 Chi Lăng (chung TDP Phú Cát)",
+  "file39": "152 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "12/9/2026",
+  "ghiChu": "Biên bản tạm bố trí mới hơn file gốc",
+  "coBienBan": true,
+  "trangThai": "Tạm bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 11,
+  "phuongCu": "Gia Hội",
+  "tdp": "Lạc Hộ",
+  "diaDiem": "Trần Quang Long – Trụ sở tổ 18 Gia Hội cũ",
+  "file39": "Trần Quang Long - Trụ sở tổ 18 Gia Hội cũ (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đã bố trí (chưa có BB)",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 12,
+  "phuongCu": "Gia Hội",
+  "tdp": "Ngự Viên",
+  "diaDiem": "8 Chùa Ông",
+  "file39": "8 Chùa Ông (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 13,
+  "phuongCu": "Gia Hội",
+  "tdp": "Phú Cát",
+  "diaDiem": "152 Chi Lăng; Tạm bố trí 130 Chi Lăng (chung TDP Gia Hội)",
+  "file39": "152 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "26/8/2026 / 12/9/2026",
+  "ghiChu": "Ngày biên bản 152 Chi Lăng là 26/8 (file gốc ghi 29/8); có thêm biên bản tạm bố trí 130 Chi Lăng",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 14,
+  "phuongCu": "Gia Hội",
+  "tdp": "Phú Hiệp",
+  "diaDiem": "2 Kiệt 111 Nguyễn Chí Thanh, 118 Nguyễn Chí Thanh và Ban Bảo vệ dân phố 279 Chi Lăng",
+  "file39": "2 Kiệt 111 Nguyễn Chí Thanh, 118 Nguyễn Chí Thanh và Ban Bảo vệ dân phố 279 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đã bố trí (chưa có BB)",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 15,
+  "phuongCu": "Gia Hội",
+  "tdp": "Phú Mỹ",
+  "diaDiem": "328 Chi Lăng (chung TDP Xuân Dương)",
+  "file39": "328 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 16,
+  "phuongCu": "Gia Hội",
+  "tdp": "Thế Lại",
+  "diaDiem": "12/20 Lê Đình Chinh",
+  "file39": "12/20 Lê Đình Chinh (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 17,
+  "phuongCu": "Phú Hậu",
+  "tdp": "An Quán",
+  "diaDiem": "444 Chi Lăng",
+  "file39": "444 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 18,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Bãi Dâu",
+  "diaDiem": "24 Ngô Kha, 26 Ngô Kha (ANCS)",
+  "file39": "24 Ngô Kha + 2 trụ sở dân phòng gần 24 Ngô Kha (Đã bố trí ngày 30/7/2026)",
+  "ngayBoTri": "30/7/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 19,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Chợ Dinh",
+  "diaDiem": "425 Chi Lăng",
+  "file39": "425 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "Ngày biên bản 28/8 (file gốc ghi 29/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 20,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Phú Hậu",
+  "diaDiem": "44 Ngô Nhân Tịnh",
+  "file39": "44 Ngô Nhân Tịnh (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 21,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Thị Sắc",
+  "diaDiem": "Chung cư YQK (Đoàn Nguyễn Tuấn – Ngô Kha)",
+  "file39": "Ngã ba Ngô Kha –  Đoàn Nguyễn Tuấn (đầu đường Bùi Dương Lịch (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "Chung cư Đoàn Nguyễn Tuấn, Huế",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 22,
+  "phuongCu": "Phú Hậu",
+  "tdp": "Xuân Dương",
+  "diaDiem": "328 Chi Lăng (chung TDP Phú Mỹ)",
+  "file39": "328 Chi Lăng (Đã bố trí ngày 29/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 23,
+  "phuongCu": "Tây Lộc",
+  "tdp": "An Trạch",
+  "diaDiem": "36 La Sơn Phu Tử",
+  "file39": "36 La Sơn Phu Tử (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 24,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Bắc Thuận",
+  "diaDiem": "95 Tăng Bạt Hổ",
+  "file39": "95 Tăng Bạt Hổ (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 25,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Do Nghĩa",
+  "diaDiem": "32 Thái Phiên – trụ sở dân phòng (và sử dụng Trường TH Tây Lộc, 115 Trần Quốc Toản)",
+  "file39": "32 Thái Phiên - trụ sở dân phòng (và sử dụng Trường TH Tây Lộc 115 Trần Quốc Toản, Chưa bố trí)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Chưa bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 26,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Khánh Ninh",
+  "diaDiem": "136 Lê Đại Hành",
+  "file39": "136 Lê Đại Hành (Chưa bố trí)",
+  "ngayBoTri": "04/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 27,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Mộc Đức",
+  "diaDiem": "32 Thái Phiên",
+  "file39": "32 Thái Phiên (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "26/8/2026",
+  "ghiChu": "Ngày biên bản 26/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 28,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Phú Thuận",
+  "diaDiem": "512 Lê Duẩn (đề xuất)",
+  "file39": "512 Lê Duẫn (Đề xuất)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đề xuất",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 29,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Tây Lộc",
+  "diaDiem": "44 Trần Quốc Toản",
+  "file39": "44 Trần Quốc Toản (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 30,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Tây Tĩnh",
+  "diaDiem": "40 Hòa Mỹ",
+  "file39": "40 Hòa Mỹ (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": [
+   "images/tdp-30-tay-tinh-1795761660713.jpg",
+   "images/tdp-30-tay-tinh-1795761664291.jpg",
+   "images/tdp-30-tay-tinh-1795761668237.jpg",
+   "images/tdp-30-tay-tinh-1795761672130.jpg"
+  ]
+ },
+ {
+  "id": 31,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Thừa Thanh",
+  "diaDiem": "49A Thánh Gióng",
+  "file39": "49A Thánh Gióng (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 32,
+  "phuongCu": "Tây Lộc",
+  "tdp": "Vĩnh Lợi",
+  "diaDiem": "49 Đạm Phương",
+  "file39": "49 Đạm Phương (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "29/8/2026",
+  "ghiChu": "Ngày biên bản 29/8 (file gốc ghi 28/8)",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 33,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Cửa Hữu",
+  "diaDiem": "Mượn 127 Nguyễn Trãi",
+  "file39": "Mượn 127 Nguyễn Trãi",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Mượn tạm",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 34,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Huệ An",
+  "diaDiem": "69 Lê Huân hoặc Trường THCS Trần Cao Vân",
+  "file39": "69 Lê Huân hoặc trường THCS Trần Cao Vân (Đang xem xét, Chưa bố trí)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Đang xem xét",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 35,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Phú Thạnh",
+  "diaDiem": "248A Lê Duẩn",
+  "file39": "248A Lê Duẫn (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 36,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Thuận Cát",
+  "diaDiem": "Trường TH Thuận Hòa (CS 3)",
+  "file39": "Trường TH Thuận Hòa (CS 3)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Mượn tạm",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 37,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Thuận Hòa",
+  "diaDiem": "Chưa có (mượn trường học)",
+  "file39": "Chưa có (mượn trường học)",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Chưa bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 38,
+  "phuongCu": "Thuận Hòa",
+  "tdp": "Tri Vụ",
+  "diaDiem": "Mượn 127 Nguyễn Trãi",
+  "file39": "Mượn 127 Nguyễn Trãi",
+  "ngayBoTri": "",
+  "ghiChu": "",
+  "coBienBan": false,
+  "trangThai": "Mượn tạm",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 39,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "An Thạnh",
+  "diaDiem": "115B Thánh Gióng (30 Mang Cá hoạt động tạm đến khi giải tỏa)",
+  "file39": "115B Thánh Gióng (30 Mang Cá hoạt động tạm đến khi giải tỏa) (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "Biên bản ghi 32 Mang Cá; ghi theo file gốc",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 40,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Bắc Hòa",
+  "diaDiem": "405 Tăng Bạt Hổ",
+  "file39": "308 Tăng Bạt Hỗ (Đã bố trí ngày 28/8/2026) / Số 405 Tăng Bạt Hổ (Đối chiếu CV UB)",
+  "ngayBoTri": "24/9/2026",
+  "ghiChu": "Biên bản mới ghi 405 Tăng Bạt Hổ",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 41,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Đệ Nhị",
+  "diaDiem": "79 Đào Duy Anh",
+  "file39": "79 Đào Duy Anh (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 42,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Lương Y",
+  "diaDiem": "31/16 Lương Y",
+  "file39": "31/16 Lương Y (Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 43,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Phú Bình",
+  "diaDiem": "28 Đào Duy Anh và 56 Đào Duy Anh",
+  "file39": "28 Đào Duy Anh + 56 Đào Duy Anh (Đã bố trí ngày 26/8/2026)",
+  "ngayBoTri": "26/8/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 44,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Phú Nhơn",
+  "diaDiem": "53 Lê Văn Hưu",
+  "file39": "53 Lê Văn Hưu (Đã bố trí ngày 13/7/2026)",
+  "ngayBoTri": "13/7/2026",
+  "ghiChu": "",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 45,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Tàng Thơ",
+  "diaDiem": "Kiệt 137 Đinh Tiên Hoàng",
+  "file39": "Kiệt 137 Đinh Tiên Hoàng (chưa bố trí)",
+  "ngayBoTri": "05/9/2026",
+  "ghiChu": "File gốc ghi chưa bố trí",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 46,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Tây Linh",
+  "diaDiem": "16 Thế Lữ",
+  "file39": "16 Thế Lữ ((Đã bố trí ngày 28/8/2026)",
+  "ngayBoTri": "28/8/2026",
+  "ghiChu": "Biên bản ghi 18 Thế Lữ; ghi theo file gốc",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ },
+ {
+  "id": 47,
+  "phuongCu": "Thuận Lộc",
+  "tdp": "Vĩnh An",
+  "diaDiem": "32 Mai Thúc Loan",
+  "file39": "32 Mai Thúc Loan (Do cơ sở vật chất không có, nên tổ Dân phố không nhận)",
+  "ngayBoTri": "25/9/2026",
+  "ghiChu": "File gốc ghi tổ không nhận, nhưng đã có biên bản bàn giao",
+  "coBienBan": true,
+  "trangThai": "Đã bố trí",
+  "mapQuery": "",
+  "haTang": {
+   "tinhTrang": "",
+   "dienTich": "",
+   "sucChua": "",
+   "moTa": ""
+  },
+  "anh": []
+ }
+]
